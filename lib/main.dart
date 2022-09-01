@@ -1,4 +1,6 @@
-import 'package:abllseducation/Screens/START%20_LOGIN/rout_onGenerateRout.dart';
+import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
+import 'package:abllseducation/Screens/START%20_LOGIN/Information_Screen.dart';
+import 'package:abllseducation/Screens/START%20_LOGIN/PageView.dart';
 import 'package:abllseducation/Splash_Screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +19,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      onGenerateRoute: AppRouts.OnGenerateRout,
-     );
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/PageViewScreen': (context) => const PageViewScreen(),
+        '/InformationScreen':(context) => InformationScreen(),
+      },
+      );
   }
 }

@@ -1,4 +1,4 @@
-import 'package:abllseducation/Screens/START%20_LOGIN/rout_onGenerateRout.dart';
+import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 class SplashScreen extends StatefulWidget {
