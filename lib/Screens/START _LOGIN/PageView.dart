@@ -17,16 +17,16 @@ class _PageViewScreenState extends State<PageViewScreen> {
         Container(
           child: Image.asset(
             'assets/page1.png',
-            width: 204,
-            height: 246,
+            width: 204.w,
+            height: 246.h,
           ),
         ),
         SizedBox(
-          height: 56,
+          height: 56.h,
         ),
         Text('موضوع'),
         SizedBox(
-          height: 56,
+          height: 56.h,
         ),
         Text('تطبيق مخصص لتعليم الأطفال من قبل'
             'المدربين او الوالدين وتقييم الطفل'
