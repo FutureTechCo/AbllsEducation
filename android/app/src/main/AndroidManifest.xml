@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.abllseducation.ios.flutter.android.abllseducation">
    <application
-        android:label="abllseducation"
+        android:label="ABA Toolkit"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
