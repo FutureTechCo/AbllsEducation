@@ -1,7 +1,10 @@
+import 'package:abllseducation/Controller/AuthController/InfoGetController.dart';
+import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 import 'package:abllseducation/Utils/HelperError.dart';
 import 'package:abllseducation/Utils/customTextFild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class InformationScreen extends StatefulWidget with Helper {
   @override
@@ -9,7 +12,6 @@ class InformationScreen extends StatefulWidget with Helper {
 }
 
 class _InformationScreenState extends State<InformationScreen> {
-
   @override
   //
   Widget build(BuildContext context) {
@@ -17,102 +19,156 @@ class _InformationScreenState extends State<InformationScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
         actions: [
-          Text(
-            'المعلومات\t\t',
-            style: TextStyle(
-              // color: HomeGetxVar().to.color6,
-              // fontFamily: HomeGetxVar().to.font_Family,
-              fontSize: 20.sp,
-              fontWeight: FontWeight.bold,
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, routapp.LoginScreen);
+            },
+            icon: Icon(
+              Icons.arrow_forward,
+              color: Colors.blue,
             ),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 32.h),
-          child: Column(
-            children: [
-              Container(
-                width: 321.w,
-                height: 53.h,
-                child: CustomTextField(
-                    // controller: LoginGetx().to.INameController,
-                    // inputType: LoginGetx().text_input,
-                    // font_Family: HomeGetxVar().to.font_Family,
-                    // color: HomeGetxVar().to.color6,
-                    hintText: 'الأسم الكامل',
-                    icon_data: Icons.person),
-              ),
-              SizedBox(
-                height: 16.h,
-              ),
-              Container(
+      body: GetBuilder<InfoGetController>(builder: (controller){
+        return SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 32.h),
+            child: Column(
+              children: [
+                InkWell (
+                    onTap: (){},
+                    child: Image.asset('assets/add.png')),
+                SizedBox(
+                  height: 16.h,
+                ),
+                Container(
                   width: 321.w,
                   height: 53.h,
                   child: CustomTextField(
-                      //         controller: LoginGetx().to.IPhoneController,
-                      //         inputType: LoginGetx().text_input,
-                      //         font_Family: HomeGetxVar().to.font_Family,
-                      //         color: HomeGetxVar().to.color6,
+                      controller: InfoGetController.to.name,
+                      inputType: InfoGetController.to.textInput,
+                      color: Color(0xff336BA4),
+                      hintText: 'الأسم الكامل',
+                      icon_data: Icons.person_outline),
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                Container(
+                    width: 321.w,
+                    height: 53.h,
+                    child: CustomTextField(
+                        controller: InfoGetController.to.email,
+                        inputType: InfoGetController.to.emailInput,
+                        hintText: 'البريد الالكتروني',
+                        color: Color(0xff336BA4),
+                        icon_data: Icons.email_outlined)),
+                SizedBox(
+                  height: 16.h,
+                ),
+                Container(
+                    width: 321.w,
+                    height: 53.h,
+                    child: CustomTextField(
+                        controller: InfoGetController.to.password,
+                        inputType: InfoGetController.to.textInput,
+                        hintText: 'كلمة السر',
+                        color: Color(0xff336BA4),
+                        icon_data: Icons.lock_outline_rounded)),
+                SizedBox(
+                  height: 16.h,
+                ),
+                Container(
+                    width: 321.w,
+                    height: 53.h,
+                    child: CustomTextField(
+                        controller: InfoGetController.to.country,
+                        inputType: InfoGetController.to.textInput,
+                        color: Color(0xff336BA4),
+                        hintText: 'الدولة',
+                        icon_data: Icons.location_on_outlined)),
+                SizedBox(
+                  height: 16.h,
+                ),
+                Container(
+                  width: 321.w,
+                  height: 53.h,
+                  child: CustomTextField(
+                      color: Color(0xff336BA4),
+                      controller: InfoGetController.to.phone,
+                      inputType: InfoGetController.to.textInput,
                       hintText: 'رقم الجوال',
-                      icon_data: Icons.phone)),
-              SizedBox(
-                height: 16.h,
-              ),
-              Container(
-                  width: 321.w,
-                  height: 53.h,
-                  child: CustomTextField(
-                      //         controller: LoginGetx().to.ICountryController,
-                      //         inputType: LoginGetx().text_input,
-                      //         font_Family: HomeGetxVar().to.font_Family,
-                      //         color: HomeGetxVar().to.color6,
-                      hintText: 'الدوله',
-                      icon_data: Icons.location_on_rounded)),
-              SizedBox(
-                height: 16.h,
-              ),
-               Container(
-                 width: 321.w,
-                 height: 53.h,
-                 child: CustomTextField(
-              //       controller: LoginGetx().to.ICityController,
-              //       inputType: LoginGetx().text_input,
-              //       font_Family: HomeGetxVar().to.font_Family,
-              //       color: HomeGetxVar().to.color6,
-                     hintText: 'المدينه',
-                     icon_data: Icons.location_city),
-              ),
-              SizedBox(
-                height: 36.h,
-              ),
-              ElevatedButton(
-                onPressed: () async {},
-                child: Text(
-                  'حفظ',
-                  style: TextStyle(
-                    // color: HomeGetxVar().to.color4,
-                    // fontFamily: HomeGetxVar().to.font_Family,
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.bold,
+                      icon_data: Icons.phone_outlined),
+                ),
+                SizedBox(
+                  height: 26.h,
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Row(
+                        children: [
+                          Checkbox(value: InfoGetController.to.ilp, onChanged: (bool? val) {
+                            InfoGetController.to.SetilpVal(val!);
+                          },side: BorderSide(
+                            color: Colors.blue,
+                            width: 2.w
+                          ),),
+                          Text('أخصائي',style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Arial',
+                              color: Colors.blue
+                          ),),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Checkbox(value: InfoGetController.to.spe, onChanged: (bool? val) {
+                            InfoGetController.to.SetspeVal(val!);
+                          },side: BorderSide(
+                            color: Colors.blue,                            width: 2.w
+
+                          ),),
+                          Text('ولي الأمر',style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Arial',
+                              color: Colors.blue
+                          ),),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                style: ElevatedButton.styleFrom(
-                    minimumSize: Size(328.w, 53.h), primary: Colors.blue),
-              ),
-            ],
+                SizedBox(
+                  height: 85.h,
+                ),
+                ElevatedButton(
+                  onPressed: () async {},
+                  child: Text(
+                    'تأكيد',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Arial',
+                      fontSize: 22.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: Size(173.w, 55.h),
+                      primary: Color(0xff336BA4),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(90.r))),
+                ),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },)
     );
   }
 }

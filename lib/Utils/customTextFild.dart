@@ -16,8 +16,7 @@ class CustomTextField extends StatelessWidget {
   CustomTextField(
       {this.controller,
       this.inputType,
-      this.font_Family,
-      this.color,
+       this.color,
       required this.hintText,
       this.icon_data,
       this.iconButton,
@@ -37,16 +36,16 @@ class CustomTextField extends StatelessWidget {
       minLines: 1,
       maxLines: 1,
       textAlignVertical: TextAlignVertical.bottom,
-      style: TextStyle(fontFamily: font_Family, fontSize: 14.sp, color: color),
+      style: TextStyle(fontFamily: 'Arial', fontSize: 20.sp, color: Colors.black,fontWeight: FontWeight.bold),
       decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(90.r),
               borderSide: BorderSide(
                 width: 1,
                 color: color!,
               )),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(90.r),
               borderSide: BorderSide(
                 width: 1,
                 color: color!,

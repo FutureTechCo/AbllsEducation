@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 import 'package:abllseducation/Utils/StylePageView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -153,7 +154,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                 children: [
                   Row(
                     children: [
-                      AnimatedContainer(duration: Duration(milliseconds: 500),curve: Curves.easeOutQuint,
+                      AnimatedContainer(duration: Duration(milliseconds: 1000),curve: Curves.easeOutQuint,
                       width: _pageNumber!=0?10.w:27.w,
                       height: 10.h,
                       decoration: BoxDecoration(
@@ -166,7 +167,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                     SizedBox(
                       width: 10.w,
                     ),
-                      AnimatedContainer(duration: Duration(milliseconds: 500),curve: Curves.easeOutQuint,
+                      AnimatedContainer(duration: Duration(milliseconds: 1000),curve: Curves.easeOutQuint,
                       width: _pageNumber!=1?10.w:27.w,
                       height: 10.h,
                       decoration: BoxDecoration(
@@ -180,7 +181,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                     SizedBox(
                       width: 10.w,
                     ),
-                    AnimatedContainer(duration: Duration(milliseconds: 500),curve: Curves.easeOutQuint,
+                    AnimatedContainer(duration: Duration(milliseconds: 1000),curve: Curves.easeOutQuint,
                       width: _pageNumber!=2?10.w:27.w,
                       height: 10.h,
                       decoration: BoxDecoration(
@@ -195,7 +196,10 @@ class _PageViewScreenState extends State<PageViewScreen> {
                   FloatingActionButton(
                       onPressed: (){
                         pageController.nextPage(duration:const Duration(microseconds:  5), curve: Curves.easeInOut);
-                      },
+                        if(_pageNumber == 2){
+                          Navigator.pushReplacementNamed(context, routapp.InformationScreen);
+                        }
+                        },
                       child:Icon(Icons.arrow_forward_ios))
                 ],
               ),
