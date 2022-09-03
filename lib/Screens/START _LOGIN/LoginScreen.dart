@@ -1,4 +1,5 @@
- import 'package:flutter/material.dart';
+ import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
@@ -33,13 +34,13 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    xx1 =false;
-                  });
-                  Get.to(() => LoginScreen(), transition: Transition.zoom);
-                },
+                  // setState(() {
+                  //   xx1 =false;
+                  // });
+                  Navigator.pushReplacementNamed(context, routapp.InformationScreen);
+                 },
                 child: Text(
-                  'تسجيل',
+                  'إنشاء حساب',
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'Arial',
@@ -66,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     xx =false;
                   });
                   // Get.to(() => index(), transition: Transition.zoom);
+                  Navigator.pushReplacementNamed(context, routapp.home);
                 },
                 child: Text(
                   'الدخول كزائر',
@@ -90,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/SignUp_Screen');
+                      Navigator.pushReplacementNamed(context, routapp.SignInScreen);
                     },
                     child: Row(
                       children: [
@@ -121,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       // Get.to(() => SignUp_Screen());
                     },
                     child: Text(
-                      'ليس لديك حساب؟',
+                      'لديك حساب؟',
                       style: TextStyle(
                         color: Color(0xffADADAD) ,
                         fontFamily: 'Arial',

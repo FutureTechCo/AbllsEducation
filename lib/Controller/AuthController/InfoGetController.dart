@@ -23,6 +23,14 @@ class InfoGetController extends GetxController{
     //TextInputType
     TextInputType textInput = TextInputType.text;
     TextInputType emailInput = TextInputType.emailAddress;
+    ////////////////////////////////////////////////////////////////////////////
+                         /*LoginScreenController*/
+    ////////////////////////////////////////////////////////////////////////////
+    TextEditingController email_Login = TextEditingController();
+    TextEditingController password_Login = TextEditingController();
+    ////////////////////////////////////////////////////////////////////////////
+                         /*ForgetScreenController*/
+    ////////////////////////////////////////////////////////////////////////////
+    TextEditingController Forget = TextEditingController();
 
-
-}
+ }
