@@ -153,7 +153,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                 children: [
                   Row(
                     children: [
-                    Container(
+                      AnimatedContainer(duration: Duration(milliseconds: 500),curve: Curves.easeOutQuint,
                       width: _pageNumber!=0?10.w:27.w,
                       height: 10.h,
                       decoration: BoxDecoration(
@@ -166,7 +166,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                     SizedBox(
                       width: 10.w,
                     ),
-                    Container(
+                      AnimatedContainer(duration: Duration(milliseconds: 500),curve: Curves.easeOutQuint,
                       width: _pageNumber!=1?10.w:27.w,
                       height: 10.h,
                       decoration: BoxDecoration(
@@ -180,7 +180,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                     SizedBox(
                       width: 10.w,
                     ),
-                    Container(
+                    AnimatedContainer(duration: Duration(milliseconds: 500),curve: Curves.easeOutQuint,
                       width: _pageNumber!=2?10.w:27.w,
                       height: 10.h,
                       decoration: BoxDecoration(
