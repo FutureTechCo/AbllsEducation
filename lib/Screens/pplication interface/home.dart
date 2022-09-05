@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../Wdjet/CstomAppar.dart';
 import '../Wdjet/Table/row.dart';
+import '../Menu/DrawerApp.dart';
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
 
@@ -10,9 +11,12 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey(); // Create a key
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
+      endDrawer: DrawerApp(),
       body:SafeArea(
           child: Column(
             children: [

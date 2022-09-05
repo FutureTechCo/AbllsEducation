@@ -1,15 +1,19 @@
-import 'dart:developer';
-
+import 'package:abllseducation/Screens/Menu/app.dart';
+import 'package:abllseducation/Screens/Menu/helpScreen.dart';
+import 'package:abllseducation/Screens/Profile/ChangeCantery.dart';
+import 'package:abllseducation/Screens/Profile/ChangeName.dart';
+import 'package:abllseducation/Screens/Profile/ChangePaswword.dart';
+import 'package:abllseducation/Screens/Profile/ChangePhone.dart';
+import 'package:abllseducation/Screens/Profile/EditProfileScreen.dart';
 import 'package:abllseducation/Screens/START%20_LOGIN/ForgetPassword.dart';
 import 'package:abllseducation/Screens/START%20_LOGIN/Information_Screen.dart';
 import 'package:abllseducation/Screens/START%20_LOGIN/PageView.dart';
 import 'package:abllseducation/Screens/START%20_LOGIN/SingIn.dart';
 import 'package:abllseducation/Splash_Screen.dart';
 import 'package:flutter/material.dart';
-
 import '../Screens/START _LOGIN/LoginScreen.dart';
 import '../Screens/pplication interface/home.dart';
-
+import 'package:abllseducation/Screens/Profile/ProfileScreen.dart';
 class routapp {
   static const String initialRoute = '/';
   static const String pageViewRoutScreen = '/PageViewScreen';
@@ -18,15 +22,23 @@ class routapp {
   static const String home = '/home';
   static const String SignInScreen = '/SignInScreen';
   static const String FroGetScreen = '/FroGetScreen';
+  static const String AboutAppScreen = '/AboutAppScreen';
+  static const String helpScreen = '/helpScreen';
+  static const String Profile_Screen = '/ProfileScreen';
+  static const String EditProfileScreen = '/EditProfileScreen';
+  static const String ChangeNameScreen = '/ChangeNameScreen';
+  static const String ChangePhoneScreen = '/ChangePhoneScreen';
+  static const String ChangeCanteryScreen = '/ChangeCanteryScreen';
+  static const String ChangePaswwordScreen = '/ChangePaswwordScreen';
 }
 
 class AppRouts {
   static Route? OnGenerateRout(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case routapp.initialRoute:
-         return MaterialPageRoute(builder: (context) => SplashScreen());
+        return MaterialPageRoute(builder: (context) => SplashScreen());
       case routapp.pageViewRoutScreen:
-         return MaterialPageRoute(
+        return MaterialPageRoute(
           builder: (context) => const PageViewScreen(),
         );
       case routapp.InformationScreen:
@@ -45,9 +57,41 @@ class AppRouts {
         return MaterialPageRoute(
           builder: (context) => SignIn(),
         );
-        case routapp.FroGetScreen:
+      case routapp.FroGetScreen:
         return MaterialPageRoute(
           builder: (context) => ForGetScreen(),
+        );
+      case routapp.AboutAppScreen:
+        return MaterialPageRoute(
+          builder: (context) => AboutAppScreen(),
+        );
+      case routapp.helpScreen:
+        return MaterialPageRoute(
+          builder: (context) => helpScreen(),
+        );
+      case routapp.Profile_Screen:
+        return MaterialPageRoute(
+          builder: (context) => ProfilesScreen(),
+        );
+      case routapp.EditProfileScreen:
+        return MaterialPageRoute(
+          builder: (context) => EditProfileScreen(),
+        );
+      case routapp.ChangeNameScreen:
+        return MaterialPageRoute(
+          builder: (context) => ChangeName(),
+        );
+      case routapp.ChangePhoneScreen:
+        return MaterialPageRoute(
+          builder: (context) => ChangePhone(),
+        );
+      case routapp.ChangeCanteryScreen:
+        return MaterialPageRoute(
+          builder: (context) => ChangeCantery(),
+        );
+      case routapp.ChangePaswwordScreen:
+        return MaterialPageRoute(
+          builder: (context) => ChangePaswword(),
         );
       default:
         return null;

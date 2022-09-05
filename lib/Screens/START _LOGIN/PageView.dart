@@ -50,7 +50,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                 },
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0.h),
+                    padding: EdgeInsets.symmetric(horizontal: 24.0.h),
                     child: Container(
                       child: Column(
                         children: [
@@ -77,7 +77,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0.h),
+                    padding: EdgeInsets.symmetric(horizontal: 24.0.h),
                     child: Container(
                       child: Column(
                         children: [
@@ -109,7 +109,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0.h),
+                    padding: EdgeInsets.symmetric(horizontal: 24.0.h),
                     child: Container(
                       child: Column(
                         children: [
@@ -132,7 +132,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                             height: 26.h,
                           ),
                           Text(
-                            'لن تحتاج للاستفسار كثيراً كيفيه وطريقه تنفيذ النشاط ستجد كل نشاط له فيديو يشرح طريقه تطبيقه داخل مجاله بإمكاك الإطلاع على أي فيديو وإعادة مشاهده متى إحتجت ذلك',
+                            'لن تحتاج للاستفسار كثيراً كيفيه وطريقه تنفيذ النشاط ستجد كل نشاط له فيديو يشرح طريقه تطبيقه داخل مجاله بإمكانه الإطلاع على أي فيديو وإعادة مشاهدته متى إحتجت ذلك',
                             style: StyleSupTile(),
                             textAlign: TextAlign.center,
                           ),
@@ -146,62 +146,65 @@ class _PageViewScreenState extends State<PageViewScreen> {
           ),
           Align(
             alignment: Alignment.centerRight,
-            child: Container(
-              width: 189.w,
-              height: 50.h,
-               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      AnimatedContainer(duration: Duration(milliseconds: 1000),curve: Curves.easeOutQuint,
-                      width: _pageNumber!=0?10.w:27.w,
-                      height: 10.h,
-                      decoration: BoxDecoration(
-                          color: _pageNumber!=0?Colors.white:Colors.blue,
-                          borderRadius: BorderRadius.circular(90.r),
-                          border: Border.all(
-                              color:Colors.blue
-                          )),
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                      AnimatedContainer(duration: Duration(milliseconds: 1000),curve: Curves.easeOutQuint,
-                      width: _pageNumber!=1?10.w:27.w,
-                      height: 10.h,
-                      decoration: BoxDecoration(
-                          color: _pageNumber!=1?Colors.white:Colors.blue,
-                          borderRadius: BorderRadius.circular(90.r),
-                          border: Border.all(
-                              color: Colors.blue
-                          )
+            child: Padding(
+              padding:   EdgeInsets.symmetric(horizontal:24.0.h),
+              child: Container(
+                width: 189.w,
+                height: 50.h,
+                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        AnimatedContainer(duration: Duration(milliseconds: 1000),curve: Curves.easeOutQuint,
+                        width: _pageNumber!=0?10.w:27.w,
+                        height: 10.h,
+                        decoration: BoxDecoration(
+                            color: _pageNumber!=0?Colors.white:Colors.blue,
+                            borderRadius: BorderRadius.circular(90.r),
+                            border: Border.all(
+                                color:Colors.blue
+                            )),
                       ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    AnimatedContainer(duration: Duration(milliseconds: 1000),curve: Curves.easeOutQuint,
-                      width: _pageNumber!=2?10.w:27.w,
-                      height: 10.h,
-                      decoration: BoxDecoration(
-                          color: _pageNumber!=2?Colors.white:Colors.blue,
-                          borderRadius: BorderRadius.circular(90.r),
-                          border: Border.all(
-                              color: Colors.blue
-                          )
+                      SizedBox(
+                        width: 10.w,
                       ),
-                    )
-                  ],),
-                  FloatingActionButton(
-                      onPressed: (){
-                        pageController.nextPage(duration:const Duration(microseconds:  5), curve: Curves.easeInOut);
-                        if(_pageNumber == 2){
-                          Navigator.pushReplacementNamed(context, routapp.LoginScreen);
-                        }
-                        },
-                      child:Icon(Icons.arrow_forward_ios))
-                ],
+                        AnimatedContainer(duration: Duration(milliseconds: 1000),curve: Curves.easeOutQuint,
+                        width: _pageNumber!=1?10.w:27.w,
+                        height: 10.h,
+                        decoration: BoxDecoration(
+                            color: _pageNumber!=1?Colors.white:Colors.blue,
+                            borderRadius: BorderRadius.circular(90.r),
+                            border: Border.all(
+                                color: Colors.blue
+                            )
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10.w,
+                      ),
+                      AnimatedContainer(duration: Duration(milliseconds: 1000),curve: Curves.easeOutQuint,
+                        width: _pageNumber!=2?10.w:27.w,
+                        height: 10.h,
+                        decoration: BoxDecoration(
+                            color: _pageNumber!=2?Colors.white:Colors.blue,
+                            borderRadius: BorderRadius.circular(90.r),
+                            border: Border.all(
+                                color: Colors.blue
+                            )
+                        ),
+                      )
+                    ],),
+                    FloatingActionButton(
+                        onPressed: (){
+                          pageController.nextPage(duration:const Duration(microseconds:  5), curve: Curves.easeInOut);
+                          if(_pageNumber == 2){
+                            Navigator.pushReplacementNamed(context, routapp.LoginScreen);
+                          }
+                          },
+                        child:Icon(Icons.arrow_forward_ios))
+                  ],
+                ),
               ),
             ),
           )
