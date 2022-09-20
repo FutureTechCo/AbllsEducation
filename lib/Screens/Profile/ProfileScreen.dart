@@ -47,6 +47,7 @@ class ProfilesScreen extends StatelessWidget {
                         flex: 26,
                       ),
                       Row(
+
                         children: [
                           Text(
                             'الملف الشخصي',

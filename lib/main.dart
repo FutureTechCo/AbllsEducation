@@ -2,7 +2,6 @@ import 'package:abllseducation/Controller/AuthController/InfoGetController.dart'
 import 'package:abllseducation/Controller/HomeController/MenuController.dart';
 import 'package:abllseducation/Controller/HomeController/ProfileController.dart';
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
-import 'package:abllseducation/Splash_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
