@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class row1 extends StatelessWidget {
-  const row1({
+class row2 extends StatelessWidget {
+  const row2({
     Key? key,
   }) : super(key: key);
 
@@ -13,9 +13,30 @@ class row1 extends StatelessWidget {
       width: 321,
       child: Row(
         children: [
+          Expanded(child:    Container(
+
+            decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xff7899DC),
+                    spreadRadius: 2,
+                  )
+                ]
+
+            ),
+            child: Center(
+              child: Text('A1-2',style: TextStyle(
+                color: Color(0xffA6A6A6),
+                fontSize: 16,
+
+              ),),
+            ),
+          ),),
+
           Expanded(
             child: Container(
-             
+
               decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
@@ -27,7 +48,7 @@ class row1 extends StatelessWidget {
 
               ),
               child: Center(
-                child: Text('A1-2',style: TextStyle(
+                child: Text('A1-1',style: TextStyle(
                   color: Color(0xffA6A6A6),
                   fontSize: 16,
 
@@ -35,9 +56,10 @@ class row1 extends StatelessWidget {
               ),
             ),
           ),
+
           Expanded(
             child: Container(
-             
+
               decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
