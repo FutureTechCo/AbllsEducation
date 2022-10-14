@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 
 class row3 extends StatelessWidget {
   const row3({
@@ -13,91 +14,103 @@ class row3 extends StatelessWidget {
       width: 321,
       child: Row(
         children: [
-          Expanded(child:    Container(
+          Expanded(child:    InkWell(
+            onTap: (){Navigator.pushNamed(context,routapp.vadeo_screen);},
+            child: Container(
 
-            decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xff7899DC),
-                    spreadRadius: 2,
-                  )
-                ]
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xff7899DC),
+                      spreadRadius: 2,
+                    )
+                  ]
 
-            ),
-            child: Center(
-              child: Text('A1-2',style: TextStyle(
-                color: Color(0xffA6A6A6),
-                fontSize: 16,
+              ),
+              child: Center(
+                child: Text('A1-2',style: TextStyle(
+                  color: Color(0xffA6A6A6),
+                  fontSize: 16,
 
-              ),),
+                ),),
+              ),
             ),
           ),),
 
           Expanded(
-            child: Container(
+            child: InkWell(
+              onTap: (){Navigator.pushNamed(context,routapp.vadeo_screen);},
+              child: Container(
 
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff7899DC),
-                      spreadRadius: 2,
-                    )
-                  ]
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xff7899DC),
+                        spreadRadius: 2,
+                      )
+                    ]
 
-              ),
-              child: Center(
-                child: Text('A1-1',style: TextStyle(
-                  color: Color(0xffA6A6A6),
-                  fontSize: 16,
+                ),
+                child: Center(
+                  child: Text('A1-1',style: TextStyle(
+                    color: Color(0xffA6A6A6),
+                    fontSize: 16,
 
-                ),),
+                  ),),
+                ),
               ),
             ),
           ),
 
           Expanded(
-            child: Container(
+            child: InkWell(
+              onTap: (){Navigator.pushNamed(context,routapp.vadeo_screen);},
+              child: Container(
 
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff7899DC),
-                      spreadRadius: 2,
-                    )
-                  ]
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xff7899DC),
+                        spreadRadius: 2,
+                      )
+                    ]
 
-              ),
-              child: Center(
-                child: Text('A1-1',style: TextStyle(
-                  color: Color(0xffA6A6A6),
-                  fontSize: 16,
+                ),
+                child: Center(
+                  child: Text('A1-1',style: TextStyle(
+                    color: Color(0xffA6A6A6),
+                    fontSize: 16,
 
-                ),),
+                  ),),
+                ),
               ),
             ),
           ),
           Expanded(
-            child: Container(
+            child: InkWell(
+              onTap: (){Navigator.pushNamed(context,routapp.vadeo_screen);},
+              child: Container(
 
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff7899DC),
-                      spreadRadius: 2,
-                    )
-                  ]
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xff7899DC),
+                        spreadRadius: 2,
+                      )
+                    ]
 
-              ),
-              child: Center(
-                child: Text('A1-1',style: TextStyle(
-                  color: Color(0xffA6A6A6),
-                  fontSize: 16,
+                ),
+                child: Center(
+                  child: Text('A1-1',style: TextStyle(
+                    color: Color(0xffA6A6A6),
+                    fontSize: 16,
 
-                ),),
+                  ),),
+                ),
               ),
             ),
           ),

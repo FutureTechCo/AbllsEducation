@@ -9,6 +9,8 @@ import 'package:abllseducation/Screens/START%20_LOGIN/ForgetPassword.dart';
 import 'package:abllseducation/Screens/START%20_LOGIN/Information_Screen.dart';
 import 'package:abllseducation/Screens/START%20_LOGIN/PageView.dart';
 import 'package:abllseducation/Screens/START%20_LOGIN/SingIn.dart';
+import 'package:abllseducation/Screens/pplication%20interface/totel_.dart';
+import 'package:abllseducation/Screens/pplication%20interface/vadeo_screen.dart';
 import 'package:abllseducation/Splash_Screen.dart';
 import 'package:flutter/material.dart';
 import '../Screens/START _LOGIN/LoginScreen.dart';
@@ -30,6 +32,8 @@ class routapp {
   static const String ChangePhoneScreen = '/ChangePhoneScreen';
   static const String ChangeCanteryScreen = '/ChangeCanteryScreen';
   static const String ChangePaswwordScreen = '/ChangePaswwordScreen';
+  static const String vadeo_screen = '/vadeo_screen';
+  static const String totel_ ='/totel_';
 }
 
 class AppRouts {
@@ -92,6 +96,14 @@ class AppRouts {
       case routapp.ChangePaswwordScreen:
         return MaterialPageRoute(
           builder: (context) => ChangePaswword(),
+        );
+      case routapp.vadeo_screen:
+        return MaterialPageRoute(
+          builder: (context) => vadeo_screen(),
+        );
+      case routapp.totel_:
+        return MaterialPageRoute(
+          builder: (context) => totel_(),
         );
       default:
         return null;
