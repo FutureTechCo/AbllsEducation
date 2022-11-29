@@ -10,8 +10,10 @@ class CustomTextField extends StatelessWidget {
   IconData? icon_data;
   IconButton? iconButton;
   bool obscureText;
+  TextInputAction? textInputActions;
   bool? enableds;
-  dynamic? vars;
+  dynamic vars;
+  dynamic onSubmit;
 
   CustomTextField(
       {this.controller,
@@ -20,9 +22,12 @@ class CustomTextField extends StatelessWidget {
       required this.hintText,
       this.icon_data,
       this.iconButton,
+      this.textInputActions,
       this.obscureText = false,
       this.enableds = true,
-      this.vars});
+      this.vars,
+      this.onSubmit,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +38,8 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText,
       onTap: vars,
       enabled: enableds,
+      textInputAction:textInputActions,
+      onSubmitted: onSubmit,
       minLines: 1,
       maxLines: 1,
       textAlignVertical: TextAlignVertical.bottom,
@@ -51,6 +58,7 @@ class CustomTextField extends StatelessWidget {
                 color: color!,
               )),
           hintText: hintText,
+
           helperStyle:
               TextStyle(fontFamily: font_Family, fontSize: 20.sp, color: color),
           suffixIcon: Icon(icon_data, color: color, size: 24.sm),

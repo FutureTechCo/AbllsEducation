@@ -182,6 +182,37 @@ class DrawerApp extends StatelessWidget {
           height: 18.h,
         ),
         InkWell(
+          onTap: () {
+            Navigator.pushNamed(context,routapp.helpScreen);
+          },
+          child: Container(
+            height: 30,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'الدعم الفني',
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontFamily: 'Arial',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 16.w,
+                  ),
+                 Icon(Icons.help_center_outlined,size: 28.sm,)
+                ],
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 18.h,
+        ),
+        InkWell(
           onTap: () {},
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.h),
@@ -204,6 +235,7 @@ class DrawerApp extends StatelessWidget {
             ),
           ),
         ),
+
       ],
     ));
     // UserAccountsDrawerHeader(
