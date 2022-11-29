@@ -1,20 +1,29 @@
 import 'package:abllseducation/Controller/AuthController/InfoGetController.dart';
-import 'package:abllseducation/Controller/HomeController/HomeController.dart';
 import 'package:abllseducation/Controller/HomeController/MenuController.dart';
 import 'package:abllseducation/Controller/HomeController/ProfileController.dart';
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pod_player/pod_player.dart';
 
-void main() {
+import 'Controller/AuthController/GetxLogin.dart';
+import 'Controller/HomeController/HomeController.dart';
+import 'Controller/HomeGetxVar.dart';
+
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   PodVideoPlayer.enableLogs = true;
+  await Firebase.initializeApp();
+
   Get.put(InfoGetController());
   Get.put(MenuController());
   Get.put(ProfileController());
   Get.put(HomeController());
+  await Get.put(HomeGetxVar());
+
+  await Get.put(LoginGetx());
   runApp(const MyApp());
 }
 

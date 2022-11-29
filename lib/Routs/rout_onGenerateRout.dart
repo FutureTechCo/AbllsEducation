@@ -15,6 +15,7 @@ import 'package:abllseducation/Screens/pplication%20interface/vadeo_screen.dart'
 import 'package:abllseducation/Splash_Screen.dart';
 import 'package:flutter/material.dart';
 import '../Screens/START _LOGIN/LoginScreen.dart';
+import '../Screens/START _LOGIN/RegisterScreen.dart';
 import '../Screens/pplication interface/home.dart';
 import 'package:abllseducation/Screens/Profile/ProfileScreen.dart';
 class routapp {
@@ -36,6 +37,7 @@ class routapp {
   static const String vadeo_screen = '/vadeo_screen';
   static const String totel_ ='/totel_';
   static const String FindeLevel ='/FindeLevel';
+  static const String RegisterScreen ='/RegisterScreen';
 }
 
 class AppRouts {
@@ -110,6 +112,10 @@ class AppRouts {
         case routapp.FindeLevel:
         return MaterialPageRoute(
           builder: (context) => FindeLevel(),
+        );
+      case routapp.RegisterScreen:
+        return MaterialPageRoute(
+          builder: (context) => RegisterScreen(),
         );
       default:
         return null;

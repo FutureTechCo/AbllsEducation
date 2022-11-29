@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "934171786425",
+    "project_id": "abllseducation",
+    "storage_bucket": "abllseducation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934171786425:android:07196d08a74065a5a06f68",
+        "android_client_info": {
+          "package_name": "com.abllseducation.ios.flutter.android.abllseducation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934171786425-u5lcv6e4bjtcl3oi3emquigrbi0ia3mm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_c7q5w9zuQb-wrBEza1e_LEYq_M2P0zE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934171786425-u5lcv6e4bjtcl3oi3emquigrbi0ia3mm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

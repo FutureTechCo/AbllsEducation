@@ -18,6 +18,11 @@ dependencies:
   flutter_svg: any
   url_launcher: any
   pod_player: ^0.1.0
+  firebase_core: any
+  firebase_auth: any
+  firebase_storage: ^10.2.18
+  cloud_firestore: ^3.1.18
+  image_picker: any
 
 
 dev_dependencies:
