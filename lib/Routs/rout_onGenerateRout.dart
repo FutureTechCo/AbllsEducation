@@ -1,3 +1,4 @@
+import 'package:abllseducation/MonthlySubscription.dart';
 import 'package:abllseducation/Screens/Menu/app.dart';
 import 'package:abllseducation/Screens/Menu/helpScreen.dart';
 import 'package:abllseducation/Screens/Profile/ChangeCantery.dart';
@@ -38,13 +39,14 @@ class routapp {
   static const String totel_ ='/totel_';
   static const String FindeLevel ='/FindeLevel';
   static const String RegisterScreen ='/RegisterScreen';
+  static const String MonthlySubscription ='/MonthlySubscription';
 }
 
 class AppRouts {
   static Route? OnGenerateRout(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case routapp.initialRoute:
-        return MaterialPageRoute(builder: (context) => SplashScreen());
+       return MaterialPageRoute(builder: (context) => SplashScreen());
       case routapp.pageViewRoutScreen:
         return MaterialPageRoute(
           builder: (context) => const PageViewScreen(),
@@ -116,6 +118,10 @@ class AppRouts {
       case routapp.RegisterScreen:
         return MaterialPageRoute(
           builder: (context) => RegisterScreen(),
+        );
+        case routapp.MonthlySubscription:
+        return MaterialPageRoute(
+          builder: (context) => MonthlySubscription(),
         );
       default:
         return null;

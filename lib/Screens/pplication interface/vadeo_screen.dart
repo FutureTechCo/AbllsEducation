@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:abllseducation/Controller/HomeController/HomeController.dart';
 import 'package:abllseducation/model/levels_model_response.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,7 @@ class _vadeo_screenState extends State<vadeo_screen> {
         HomeController.to.object.url,
       ),
     )..initialise();
+    log('message => ${controller.currentVideoPosition}');
     super.initState();
   }
 
@@ -27,6 +30,11 @@ class _vadeo_screenState extends State<vadeo_screen> {
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
   }
   @override
   Widget build(BuildContext context) {
@@ -122,6 +130,7 @@ class _vadeo_screenState extends State<vadeo_screen> {
                 borderRadius: BorderRadius.circular(20),
                ),
                child: PodVideoPlayer(
+
                 frameAspectRatio:328/150,
                 alwaysShowProgressBar: true,
                   videoThumbnail:DecorationImage(
