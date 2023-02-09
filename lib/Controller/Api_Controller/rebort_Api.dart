@@ -27,6 +27,7 @@ class reboet_Api{
     report x =report();
     return  x ;
   }*/
+  int i=0;
   Future<List<Level>?> getrebort({required cus_id}) async {
     List<Level>? DataResult;
     var  url = Uri.parse("${SettingApiUri.report}cus_id=$cus_id");
@@ -37,7 +38,9 @@ class reboet_Api{
       rebort_cust x =rebort_cust.fromJson(Rebort);
 
       DataResult =x.Leveles;
-      print(DataResult![0].name);
+
+      print("name:${DataResult![i].name} totel ${i}");
+      i++;
       return DataResult;
     }
     return [];

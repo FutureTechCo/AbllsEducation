@@ -26,11 +26,11 @@ class _reseltState extends State<reselt> {
                       cus_id: 'asd32qw1e5qw46e'),
 
                   builder: (context, snapshot) {
-                    print("kjhkjh${controller.level.name}");
+                   // print("kjhkjh${controller.DataResult[1].name}");
 
-                    if (controller.level != null) {
+                    if (controller.DataResult.isNotEmpty) {
                       return  Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           CstomAppBar_sup((){}),
                           Padding(
@@ -40,9 +40,18 @@ class _reseltState extends State<reselt> {
                                 fontWeight: FontWeight.bold
                             ),),
                           ),
-                          for (int j = 0;    j < controller.DataResult.length;  j++)
-                            widjet_level(percent:controller.percent ,titel:controller.DataResult[j].name
-                                ,level_id:"${controller.DataResult[j].id}",cust_id:'asd32qw1e5qw46e')
+                          Container(
+                            height: 600.h,
+                            width: 370,
+                            child: ListView(
+                              children: [
+                                for (int j = 0;    j < controller.DataResult.length;  j++)
+                                  if(controller.DataResult[j]!=null)
+                                widjet_level(percent:controller.percent ,titel:controller.DataResult[j].name
+                                    ,level_id:"${controller.DataResult[j].id}",cust_id:'asd32qw1e5qw46e')
+                              ],
+                            ),
+                          )
 
                         ],
                       );

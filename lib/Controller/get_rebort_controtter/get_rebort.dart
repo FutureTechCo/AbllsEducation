@@ -27,10 +27,11 @@ class get_rebort extends myGet.GetxController{
     await reboet_Api().getrebort(cus_id: cus_id).then((value) {
       DataResult = <Level>[];
       DataResult = value!;
+      update();
     });
-    update();
+
   }
- Future<void> get_pasent({required cus_id})async{
+ get_pasent({required cus_id})async{
     var totel;
     var vieo_wathaed;
     await getrebort(cus_id: cus_id);
@@ -45,7 +46,7 @@ class get_rebort extends myGet.GetxController{
         }
        }
     percent =( totel/vieo_wathaed);
-       update();
+
   }
 
   Future<void> getLevel({required cus_id,required level_id})async{
@@ -55,7 +56,7 @@ class get_rebort extends myGet.GetxController{
       update();
 
     });
-    print(level.name);
+  //  print(level.name);
     update();
   }
  void SetVideos(value){
