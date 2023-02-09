@@ -54,8 +54,8 @@ class createPdf {
                 SizedBox(
                   height:  title!=null?15.h:0.h,
                 ),
-                for(int y = 0 ; y < cat.length;y++)
-                  if(cat[y].videos.isNotEmpty)
+                for(int r = 0 ; r < cat.length;r++)
+                  if(cat[r].videos.isNotEmpty)
                     Row(
                     children: [
                       Container(
@@ -63,31 +63,31 @@ class createPdf {
                         width: 57,
                         child: Center(
                             child: Text(
-                              cat[y].name!,
+                              cat[r].name!,
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
                             )),
                       ),
-                      for(int j = 0 ; j < cat[y].videos.length;j++)
+                      for(int j = 0 ; j < cat[r].videos.length;j++)
                        Expanded(
                         child: Container(
                           height: 44.h,
                           width: 57.w,
                           decoration: BoxDecoration(
-                            color: cat[y].videos[j].isWatched?PdfColor.fromHex('#00EC34'):null,
+                            color: cat[r].videos[j].isWatched?PdfColor.fromHex('#00EC34'):null,
                               border: Border.all(
                                 color: PdfColor.fromHex('#000000'),
                               ),
-                              boxShadow: [
+                              boxShadow: const[
                                 BoxShadow(
                                   spreadRadius: 2,
                                 )
                               ]),
                           child: Center(
                             child: Text(
-                              cat[y].name + ' - ${j+1}',
+                              cat[r].name + ' - ${j+1}',
                               style: TextStyle(
                                 fontSize: 16,
                               ),

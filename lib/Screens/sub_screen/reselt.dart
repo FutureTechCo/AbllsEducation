@@ -26,19 +26,11 @@ class _reseltState extends State<reselt> {
                   future: controller.get_pasent(
                       cus_id: 'asd32qw1e5qw46e'),
                   builder: (context, snapshot) {
-<<<<<<< HEAD
                    // print("kjhkjh${controller.DataResult[1].name}");
-
                     if (controller.DataResult.isNotEmpty) {
                       return  Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-=======
-                 // print("kjhkjh${controller.DataResult[1].name}");
-                    if (controller.DataResult.length != 0) {
-                      return  Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
->>>>>>> 473b0ce (level2)
                         children: [
                           CstomAppBar_sup(list: controller.DataResult),
                           Padding(
@@ -50,16 +42,6 @@ class _reseltState extends State<reselt> {
                           ),
                           Container(
                             height: 600.h,
-<<<<<<< HEAD
-                            width: 370,
-                            child: ListView(
-                              children: [
-                                for (int j = 0;    j < controller.DataResult.length;  j++)
-                                  if(controller.DataResult[j]!=null)
-                                widjet_level(percent:controller.percent ,titel:controller.DataResult[j].name
-                                    ,level_id:"${controller.DataResult[j].id}",cust_id:'asd32qw1e5qw46e')
-                              ],
-=======
                             width: 370.w,
                              child: Padding(
                               padding:EdgeInsets.symmetric(horizontal: 10.h),
@@ -71,8 +53,7 @@ class _reseltState extends State<reselt> {
                                       ,level_id:"${controller.DataResult[j].id}",cust_id:'asd32qw1e5qw46e')
                                 ],
                               ),
->>>>>>> 473b0ce (level2)
-                            ),
+                             ),
                           )
 
                         ],
@@ -81,7 +62,8 @@ class _reseltState extends State<reselt> {
                       return Center(
                         child: CircularProgressIndicator(),
                       );
-                    } else {
+                    }
+                       else {
                       return Column(
                         children: [
                           Icon(

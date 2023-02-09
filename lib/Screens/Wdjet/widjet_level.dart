@@ -17,11 +17,7 @@ class widjet_level extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-<<<<<<< HEAD
-      padding: const EdgeInsets.all(6.0),
-=======
       padding:   EdgeInsets.all(6.0.r),
->>>>>>> 473b0ce (level2)
       child: Container(
         width:328.w,
         height: 50.h,

@@ -27,11 +27,8 @@ class get_rebort extends myGet.GetxController{
     await reboet_Api().getrebort(cus_id: cus_id).then((value) {
       DataResult = <Level>[];
       DataResult = value!;
-<<<<<<< HEAD
-      update();
-=======
+
       update(['DataResultLevels']);
->>>>>>> 473b0ce (level2)
     });
 
   }
