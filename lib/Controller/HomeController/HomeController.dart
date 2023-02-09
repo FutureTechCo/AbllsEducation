@@ -49,10 +49,10 @@ class HomeController extends myGet.GetxController{
    }
    void SetVideos(value){
      object = value;
-     update(['GetDataLevels']);
+     update();
    }   void SetTapTitle(value){
      tapTitle = value;
-     update(['GetDataLevels']);
+     update();
    }
 
 }
