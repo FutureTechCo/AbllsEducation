@@ -2,6 +2,10 @@ import 'package:abllseducation/Controller/HomeController/MenuController.dart';
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../Controller/AuthController/userController.dart';
+
+import '../../Controller/AuthController/GetxLogin.dart';
+import '../sub_screen/block_reselt.dart';
 
 class DrawerApp extends StatelessWidget {
   const DrawerApp({Key? key}) : super(key: key);
@@ -32,11 +36,12 @@ class DrawerApp extends StatelessWidget {
                   InkWell(
                       onTap: ()=> Scaffold.of(context).closeEndDrawer(),
                       child: CircleAvatar(child: Icon(Icons.close),backgroundColor: Colors.white,)),
-                   Image.network('https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png',width: 64.w,height: 64.h,),
+                  userController.to.avatar==null?Image.network('https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png',width: 64.w,height: 64.h,)
+                      :Image.network(userController.to.avatar,width: 64.w,height: 64.h,),
                 ],
               ),
               SizedBox(height: 9.h,),
-              Text('محمد المبحوح',
+              Text(userController.to.name??'اهلان ايها الزائير',
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontFamily: 'Arial',
@@ -44,7 +49,7 @@ class DrawerApp extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),),
                 SizedBox(height: 2.h,),
-                Text('moh@gmail.com',
+                Text(userController.to.email??'',
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontFamily: 'Arial',
@@ -90,7 +95,7 @@ class DrawerApp extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            MenuController.to.launchUrls(MenuController.to.url);
+            menuController.to.launchUrls(menuController.to.url);
           },
           child: Container(
              height: 30,
@@ -121,7 +126,10 @@ class DrawerApp extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context,routapp.helpScreen);
+            Navigator.pushNamed(context, routapp.block_reselt);
+           
+
+
           },
           child: Container(
             height: 30,
@@ -213,7 +221,9 @@ class DrawerApp extends StatelessWidget {
           height: 18.h,
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            LoginGetx().to.logout(context);
+          },
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.h),
             child: Row(

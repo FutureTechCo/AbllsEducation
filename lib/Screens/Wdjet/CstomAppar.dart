@@ -4,6 +4,8 @@ import 'package:abllseducation/api/home_request_api/home_api_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../Controller/AuthController/userController.dart';
 class CstomAppar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -39,8 +41,9 @@ class CstomAppar extends StatelessWidget {
                         children: [
                           Container(
                             width: 45.w,height: 45.h,
-                            child: Image.network(
-                                'https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png'),
+                            child: userController.to.avatar==null? Image.network(
+                                'https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png')
+                                :Image.network(userController.to.avatar),
                           ),
                           SizedBox(width: 10.w),
                           Column(
@@ -55,7 +58,7 @@ class CstomAppar extends StatelessWidget {
                                     color: Color(0xff707070)),
                               ),
                               Text(
-                                'محمد المبحوح',
+                                userController.to.name==null?'':userController.to.name,
                                 style: TextStyle(
                                     fontSize: 18.sp,
                                     fontWeight: FontWeight.bold,

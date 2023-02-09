@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   // setState(() {
                   //   xx1 =false;
                   // });
-                  Navigator.pushReplacementNamed(context, routapp.InformationScreen);
+                  Navigator.pushReplacementNamed(context, routapp.RegisterScreen);
                  },
                 child: Text(
                   'إنشاء حساب',
@@ -120,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Spacer(),
                   GestureDetector(
                     onTap: () {
-                      // Get.to(() => SignUp_Screen());
+                   //    Get.to(() => SignUp_Screen());
                     },
                     child: Text(
                       'لديك حساب؟',

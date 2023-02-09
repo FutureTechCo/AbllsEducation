@@ -1,45 +1,72 @@
+import 'package:flutter/material.dart';
+
+import 'dart:io';
+
 import 'package:abllseducation/Controller/AuthController/InfoGetController.dart';
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 import 'package:abllseducation/Utils/HelperError.dart';
 import 'package:abllseducation/Utils/customTextFild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
-class InformationScreen extends StatefulWidget with Helper {
+import '../../Controller/AuthController/GetxLogin.dart';
+import '../../Controller/AuthController/userController.dart';
+
+class InformationScreen extends StatefulWidget {
+  const InformationScreen({Key? key}) : super(key: key);
+
   @override
   State<InformationScreen> createState() => _InformationScreenState();
 }
 
 class _InformationScreenState extends State<InformationScreen> {
+  XFile? _image;
+ bool indecator = false;
+  Future getImage()async{
+     _image = await ImagePicker().pickImage(source: ImageSource.gallery,imageQuality: 50 );
+    if(_image==null)return;
+    final imageTemporary=File(_image!.path);
+    setState(() {
+     // this._image=imageTemporary;
+      InfoGetController.to.image=_image!;
+    });
+  }
   @override
-  //
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, routapp.LoginScreen);
-            },
-            icon: Icon(
-              Icons.arrow_forward,
-              color: Colors.blue,
-            ),
-          ),
-        ],
-      ),
-      body: GetBuilder<InfoGetController>(builder: (controller){
-        return SingleChildScrollView(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+
+        ),
+        body:  SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 32.h),
             child: Column(
               children: [
                 InkWell (
-                    onTap: (){},
-                    child: Image.asset('assets/add.png')),
+                  onTap: ()async{await getImage();},
+                  child:_image == null? Image.asset('assets/add.png'):
+                  Container(
+                    height: 104.h,
+                    width: 100.w,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                        shape: BoxShape.circle
+                    ),
+                    child: Image.file(  File(_image!.path),
+
+
+                      fit: BoxFit.cover,
+                      errorBuilder: ((context, error, stackTrace) {
+                        return SvgPicture.asset('assets/icons/add.svg');
+                      }),
+                    ),
+                  ),),
                 SizedBox(
                   height: 16.h,
                 ),
@@ -53,30 +80,8 @@ class _InformationScreenState extends State<InformationScreen> {
                       hintText: 'الأسم الكامل',
                       icon_data: Icons.person_outline),
                 ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                Container(
-                    width: 321.w,
-                    height: 53.h,
-                    child: CustomTextField(
-                        controller: InfoGetController.to.email,
-                        inputType: InfoGetController.to.emailInput,
-                        hintText: 'البريد الالكتروني',
-                        color: Color(0xff336BA4),
-                        icon_data: Icons.email_outlined)),
-                SizedBox(
-                  height: 16.h,
-                ),
-                Container(
-                    width: 321.w,
-                    height: 53.h,
-                    child: CustomTextField(
-                        controller: InfoGetController.to.password,
-                        inputType: InfoGetController.to.textInput,
-                        hintText: 'كلمة السر',
-                        color: Color(0xff336BA4),
-                        icon_data: Icons.lock_outline_rounded)),
+
+
                 SizedBox(
                   height: 16.h,
                 ),
@@ -112,10 +117,14 @@ class _InformationScreenState extends State<InformationScreen> {
                       Row(
                         children: [
                           Checkbox(value: InfoGetController.to.ilp, onChanged: (bool? val) {
-                            InfoGetController.to.SetilpVal(val!);
+                             setState(() {
+                               InfoGetController.to.SetilpVal(val!);
+
+                             });
+
                           },side: BorderSide(
-                            color: Colors.blue,
-                            width: 2.w
+                              color: Colors.blue,
+                              width: 2.w
                           ),),
                           Text('أخصائي',style: TextStyle(
                               fontSize: 20.sp,
@@ -127,10 +136,14 @@ class _InformationScreenState extends State<InformationScreen> {
                       ),
                       Row(
                         children: [
-                          Checkbox(value: InfoGetController.to.spe, onChanged: (bool? val) {
-                            InfoGetController.to.SetspeVal(val!);
+                          Checkbox(value: InfoGetController.to.spe,
+                            onChanged: (bool? val) {
+                                    setState(() {
+                                      InfoGetController.to.SetspeVal(val!);
+
+                                    });
                           },side: BorderSide(
-                            color: Colors.blue,                            width: 2.w
+                              color: Colors.blue,                            width: 2.w
 
                           ),),
                           Text('ولي الأمر',style: TextStyle(
@@ -147,8 +160,20 @@ class _InformationScreenState extends State<InformationScreen> {
                 SizedBox(
                   height: 85.h,
                 ),
-                ElevatedButton(
-                  onPressed: () async {},
+             indecator== false?   ElevatedButton(
+                  onPressed: () async {
+
+                    setState(() {
+                      indecator =true;
+                    });
+
+
+        bool x=   await userController().add_user(user: userController().new_user());
+                    setState(() {
+                      indecator =false;
+                    });
+                    if(x==true){Navigator.pushReplacementNamed(context, '/home'); }
+                  },
                   child: Text(
                     'تأكيد',
                     style: TextStyle(
@@ -163,12 +188,12 @@ class _InformationScreenState extends State<InformationScreen> {
                       primary: Color(0xff336BA4),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(90.r))),
-                ),
+                ) :CircularProgressIndicator(color: Color(0xff336BA4),),
               ],
             ),
           ),
-        );
-      },)
+        )
+
     );
   }
 }

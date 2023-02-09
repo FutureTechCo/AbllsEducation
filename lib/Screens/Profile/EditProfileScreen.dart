@@ -1,13 +1,37 @@
+import 'dart:io';
+
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 import 'package:abllseducation/Screens/Wdjet/CustomeAppBarProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
+import '../../Controller/AuthController/InfoGetController.dart';
+import '../../Controller/AuthController/userController.dart';
 
-class EditProfileScreen extends StatelessWidget {
+class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({Key? key}) : super(key: key);
 
   @override
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
+  XFile? image;
+
+  Future getImage()async{
+    image = await ImagePicker().pickImage(source: ImageSource.gallery,imageQuality: 50 );
+    if(image==null)return;
+    final imageTemporary=File(image!.path);
+    setState(() {
+      // this._image=imageTemporary;
+      InfoGetController.to.image=image!;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -40,13 +64,34 @@ class EditProfileScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
              children: [
+               InkWell (
+                 onTap: ()async{await getImage();},
+                 child:image == null? Image.asset('assets/add.png'):
+                 Container(
+                   height: 104.h,
+                   width: 100.w,
+                   clipBehavior: Clip.antiAlias,
+                   decoration: BoxDecoration(
+                       color: Colors.green,
+                       shape: BoxShape.circle
+                   ),
+                   child: Image.file(  File(image!.path),
+
+
+                     fit: BoxFit.cover,
+                     errorBuilder: ((context, error, stackTrace) {
+                       return SvgPicture.asset('assets/icons/add.svg');
+                     }),
+                   ),
+                 ),),
               Container(
                 width: 103.w,height: 103.h,
                 decoration: BoxDecoration(
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(90.r),
                   image: DecorationImage(
-                    image: NetworkImage('https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png')
+                    image:   NetworkImage(userController.to.avatar??
+                        'https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png')
                     ,fit: BoxFit.cover
                   )
                 ),
@@ -97,7 +142,7 @@ class EditProfileScreen extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            'moh@gmail.com',
+                            userController.to.email?? 'moh@gmail.com',
                             style: TextStyle(
                               fontSize: 18.sp,
                               fontFamily: 'Arial',
@@ -147,7 +192,7 @@ class EditProfileScreen extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            'محمدالمبحوح',
+                            userController.to.name??'????????',
                             style: TextStyle(
                               fontSize: 18.sp,
                               fontFamily: 'Arial',
@@ -202,7 +247,7 @@ class EditProfileScreen extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            '0599123456',
+                            userController.to.phone?? '0000000000',
                             style: TextStyle(
                               fontSize: 18.sp,
                               fontFamily: 'Arial',
@@ -257,7 +302,7 @@ class EditProfileScreen extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            'فلسطين\t',
+                            userController.to.country??   'ليبيا\t',
                             style: TextStyle(
                               fontSize: 18.sp,
                               fontFamily: 'Arial',
@@ -313,7 +358,7 @@ class EditProfileScreen extends StatelessWidget {
                             ],
                           ),
                           Text(
-                            '*********\t',
+                              '*********\t',
                             style: TextStyle(
                               fontSize: 18.sp,
                               fontFamily: 'Arial',

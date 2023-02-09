@@ -39,15 +39,7 @@ class firebaseUser {
   ADD_User(String path) async {
     await FirebasreStorges().uplodImage();
     user addNewUsers = user(
-        Name: LoginGetx().to.INameController.text,
-        number: int.parse(LoginGetx().to.IPhoneController.text),
-        city: LoginGetx().to.ICityController.text,
-        email: LoginGetx().to.email,
-        contre: LoginGetx().to.ICountryController.text,
-        password: ' ',
-        ID_User: LoginGetx().to.Id_user,
-        UrlImage: LoginGetx().to.UrlImageUsers,
-        path:path );
+      );
     await addNewUser(addNewUsers);
     LoginGetx().to.ICityController.text = '';
     LoginGetx().to.ICountryController.text = '';

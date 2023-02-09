@@ -2,6 +2,7 @@ import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 import 'package:abllseducation/Screens/Wdjet/CustomeAppBarProfile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../Controller/AuthController/userController.dart';
 
 class ProfilesScreen extends StatelessWidget {
   const ProfilesScreen({Key? key}) : super(key: key);
@@ -71,13 +72,11 @@ class ProfilesScreen extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Image.network(
-                    'https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png',
-                    width: 103.w,
-                    height: 103.h,
-                  ),
+                  userController.to.avatar==null?
+                  Image.network('https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png',width: 103.w,height: 103.h,)
+                      :Image.network(userController.to.avatar,width: 103.w,height: 103.h,),
                   Text(
-                    'محمد المبحوح',
+                    userController.to.name??'اهلان ايها الزائير',
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontFamily: 'Arial',
@@ -89,7 +88,7 @@ class ProfilesScreen extends StatelessWidget {
                     height: 2.h,
                   ),
                   Text(
-                    'moh@gmail.com',
+                    userController.to.email??  'moh@gmail.com',
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontFamily: 'Arial',
@@ -135,9 +134,9 @@ class ProfilesScreen extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      'moh@gmail.com',
+                      userController.to.email??  'moh@gmail.com',
                       style: TextStyle(
-                        fontSize: 18.sp,
+                        fontSize: 16.sp,
                         fontFamily: 'Arial',
                         fontWeight: FontWeight.bold,
                       ),
@@ -176,7 +175,7 @@ class ProfilesScreen extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      '0599123456',
+                      userController.to.phone??  '000000000',
                       style: TextStyle(
                         fontSize: 18.sp,
                         fontFamily: 'Arial',
@@ -203,7 +202,7 @@ class ProfilesScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          'الدولة',
+                          userController.to.country??  'ليبيا',
                           style: TextStyle(
                             fontSize: 19.sp,
                             fontFamily: 'Arial',

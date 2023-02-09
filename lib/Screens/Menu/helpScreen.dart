@@ -60,22 +60,22 @@ class helpScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                         onTap: () {
-                          MenuController.to
-                              .launchUrls(MenuController.to.GoogleMail);
+                          menuController.to
+                              .launchUrls(menuController.to.GoogleMail);
                         },
                         child: SvgPicture.asset('assets/gmail.svg')),
                     Spacer(),
                     GestureDetector(
                         onTap: () {
-                          MenuController.to
-                              .launchUrls(MenuController.to.WatsApp);
+                          menuController.to
+                              .launchUrls(menuController.to.WatsApp);
                         },
                         child: SvgPicture.asset('assets/wt.svg')),
                     Spacer(),
                     GestureDetector(
                         onTap: () {
-                          MenuController.to
-                              .launchUrls(MenuController.to.facebook);
+                          menuController.to
+                              .launchUrls(menuController.to.facebook);
                         },
                         child: SvgPicture.asset('assets/face.svg')),
                     Spacer(

@@ -1,23 +1,35 @@
-class levels_model_response {
-  late int id;
-  late String name;
-  late List<Categories> categories;
+class rebort {
+  Level? level;
 
-  @override
-  String toString() {
-    return 'levels_model_response{id: $id, name: $name, categories: $categories}';
+  rebort({this.level});
+
+  rebort.fromJson(Map<String, dynamic> json) {
+    level = json['level'] != null ? new Level.fromJson(json['level']) : null;
   }
 
-  levels_model_response(
-      {required this.id, required this.name, required this.categories});
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.level != null) {
+      data['level'] = this.level!.toJson();
+    }
+    return data;
+  }
+}
 
-  levels_model_response.fromJson(Map<String, dynamic> json) {
+class Level {
+  int? id;
+  String? name;
+  List<Categories>? categories;
+
+  Level({this.id, this.name, this.categories});
+
+  Level.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     if (json['categories'] != null) {
       categories = <Categories>[];
       json['categories'].forEach((v) {
-        categories.add(new Categories.fromJson(v));
+        categories!.add(new Categories.fromJson(v));
       });
     }
   }
@@ -34,24 +46,21 @@ class levels_model_response {
 }
 
 class Categories {
-  late int id;
-  late String name;
-  late List<Videos> videos;
+  int? id;
+  int? levelId;
+  String? name;
+  List<Videos>? videos;
 
-  @override
-  String toString() {
-    return 'Categories{id: $id, name: $name, videos: $videos}';
-  }
-
-  Categories({required this.id, required this.name, required this.videos});
+  Categories({this.id, this.levelId, this.name, this.videos});
 
   Categories.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    levelId = json['level_id'];
     name = json['name'];
     if (json['videos'] != null) {
       videos = <Videos>[];
       json['videos'].forEach((v) {
-        videos.add(new Videos.fromJson(v));
+        videos!.add(new Videos.fromJson(v));
       });
     }
   }
@@ -59,6 +68,7 @@ class Categories {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
+    data['level_id'] = this.levelId;
     data['name'] = this.name;
     if (this.videos != null) {
       data['videos'] = this.videos!.map((v) => v.toJson()).toList();
@@ -67,41 +77,41 @@ class Categories {
   }
 }
 
-  class Videos {
-  late String title;
-  late int id;
-  late String url;
-  late String image;
-  late String target;
-  late String result;
-  late String answer;
-
+class Videos {
+  int? id;
+  String? url;
+  String? title;
+  String? image;
+  String? target;
+  String? result;
+  String? answer;
+  bool? isWatched;
   Videos();
 
-  @override
-  String toString() {
-    return 'Videos{title: $title, id: $id, url: $url, image: $image, target: $target, result: $result, answer: $answer}';
-  }
 
   Videos.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
     id = json['id'];
     url = json['url'];
+    title = json['title'];
     image = json['image'];
     target = json['target'];
     result = json['result'];
     answer = json['answer'];
+    isWatched = json['is_watched'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
     data['id'] = this.id;
     data['url'] = this.url;
+    data['title'] = this.title;
     data['image'] = this.image;
     data['target'] = this.target;
     data['result'] = this.result;
     data['answer'] = this.answer;
+    data['is_watched'] = this.isWatched;
     return data;
   }
 }
+
+

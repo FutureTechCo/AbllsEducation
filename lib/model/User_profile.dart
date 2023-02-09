@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class user{
-  late String Name;
+  late String Name='';
   late int number;
   late String city;
   late String email;
@@ -10,12 +10,7 @@ class user{
   late String ID_User;
   late String UrlImage = '';
   late String path;
-  user({required this.Name,required this.number
-    ,required this.city,required this.email,required this.contre,
-    required this.password,required this.ID_User,
-    required this.UrlImage,
-    required this.path
-  });
+  user();
 
   Map<String,dynamic > toMap(){
     return{

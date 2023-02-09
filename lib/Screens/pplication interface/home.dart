@@ -123,7 +123,7 @@ class home extends StatelessWidget {
                                           ]),
                                       child: Center(
                                           child: Text(
-                                            controller.DataResult[i].name,
+                                            '${controller.DataResult[i].name}',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20.sp,

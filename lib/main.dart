@@ -1,5 +1,4 @@
 import 'package:abllseducation/Controller/AuthController/InfoGetController.dart';
-import 'package:abllseducation/Controller/HomeController/MenuController.dart';
 import 'package:abllseducation/Controller/HomeController/ProfileController.dart';
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,8 +8,12 @@ import 'package:get/get.dart';
 import 'package:pod_player/pod_player.dart';
 
 import 'Controller/AuthController/GetxLogin.dart';
+import 'Controller/AuthController/userController.dart';
 import 'Controller/HomeController/HomeController.dart';
+import 'Controller/HomeController/MenuController.dart';
 import 'Controller/HomeGetxVar.dart';
+import 'Controller/SharedPreferences/SharedPreferences.dart';
+import 'Controller/get_rebort_controtter/get_rebort.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,10 +21,13 @@ void main() async{
   await Firebase.initializeApp();
 
   Get.put(InfoGetController());
-  Get.put(MenuController());
+  Get.put(menuController());
   Get.put(ProfileController());
   Get.put(HomeController());
+  Get.put(userController());
+  Get.put(get_rebort());
   await Get.put(HomeGetxVar());
+  await SharedPreferencesApp().MethodeInitSharedPref();
 
   await Get.put(LoginGetx());
   runApp(const MyApp());

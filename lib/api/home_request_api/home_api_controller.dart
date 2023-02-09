@@ -22,6 +22,8 @@ class HomeApiController {
     }
     return [];
   }
+
+  
   Future<List<Categories>> getAllCategories()async{
     List<Categories> DataResult;
     var url = Uri.parse(SettingApiUri.Categories);

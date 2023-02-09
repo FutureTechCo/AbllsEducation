@@ -1,4 +1,3 @@
-import 'package:abllseducation/MonthlySubscription.dart';
 import 'package:abllseducation/Screens/Menu/app.dart';
 import 'package:abllseducation/Screens/Menu/helpScreen.dart';
 import 'package:abllseducation/Screens/Profile/ChangeCantery.dart';
@@ -7,7 +6,6 @@ import 'package:abllseducation/Screens/Profile/ChangePaswword.dart';
 import 'package:abllseducation/Screens/Profile/ChangePhone.dart';
 import 'package:abllseducation/Screens/Profile/EditProfileScreen.dart';
 import 'package:abllseducation/Screens/START%20_LOGIN/ForgetPassword.dart';
-import 'package:abllseducation/Screens/START%20_LOGIN/Information_Screen.dart';
 import 'package:abllseducation/Screens/START%20_LOGIN/PageView.dart';
 import 'package:abllseducation/Screens/START%20_LOGIN/SingIn.dart';
 import 'package:abllseducation/Screens/pplication%20interface/findLevel.dart';
@@ -15,10 +13,17 @@ import 'package:abllseducation/Screens/pplication%20interface/totel_.dart';
 import 'package:abllseducation/Screens/pplication%20interface/vadeo_screen.dart';
 import 'package:abllseducation/Splash_Screen.dart';
 import 'package:flutter/material.dart';
+import '../MonthlySubscription.dart';
+import '../MonthlySubscription.dart';
 import '../Screens/START _LOGIN/LoginScreen.dart';
 import '../Screens/START _LOGIN/RegisterScreen.dart';
+import '../Screens/START _LOGIN/infrmation.dart';
 import '../Screens/pplication interface/home.dart';
 import 'package:abllseducation/Screens/Profile/ProfileScreen.dart';
+
+import '../Screens/sub_screen/block_reselt.dart';
+import '../Screens/sub_screen/reselt.dart';
+import '../Screens/sub_screen/results.dart';
 class routapp {
   static const String initialRoute = '/';
   static const String pageViewRoutScreen = '/PageViewScreen';
@@ -40,6 +45,7 @@ class routapp {
   static const String FindeLevel ='/FindeLevel';
   static const String RegisterScreen ='/RegisterScreen';
   static const String MonthlySubscription ='/MonthlySubscription';
+  static const String block_reselt='/block_reselt';
 }
 
 class AppRouts {
@@ -53,11 +59,15 @@ class AppRouts {
         );
       case routapp.InformationScreen:
         return MaterialPageRoute(
-          builder: (context) => InformationScreen(),
+          builder: (context) =>const InformationScreen(),
         );
       case routapp.LoginScreen:
         return MaterialPageRoute(
           builder: (context) => LoginScreen(),
+        );
+      case routapp.block_reselt:
+        return MaterialPageRoute(
+          builder: (context) => block_reselt(),
         );
       case routapp.home:
         return MaterialPageRoute(
@@ -69,7 +79,7 @@ class AppRouts {
         );
       case routapp.FroGetScreen:
         return MaterialPageRoute(
-          builder: (context) => ForGetScreen(),
+          builder: (context) =>const ForGetScreen(),
         );
       case routapp.AboutAppScreen:
         return MaterialPageRoute(

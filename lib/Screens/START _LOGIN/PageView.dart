@@ -199,7 +199,7 @@ class _PageViewScreenState extends State<PageViewScreen> {
                         onPressed: (){
                           pageController.nextPage(duration:const Duration(microseconds:  5), curve: Curves.easeInOut);
                           if(_pageNumber == 2){
-                            Navigator.pushReplacementNamed(context, routapp.RegisterScreen);
+                            Navigator.pushReplacementNamed(context, routapp.LoginScreen);
                           }
                           },
                         child:Icon(Icons.arrow_forward_ios))

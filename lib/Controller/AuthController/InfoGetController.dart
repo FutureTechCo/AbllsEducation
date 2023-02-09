@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class InfoGetController extends GetxController{
     static InfoGetController get to => Get.find();
@@ -9,7 +10,9 @@ class InfoGetController extends GetxController{
     TextEditingController password = TextEditingController();
     TextEditingController country = TextEditingController();
     TextEditingController email = TextEditingController();
+   late XFile image;
     //Option
+
     bool ilp = false;
     bool spe = false;
     void SetilpVal(bool i){

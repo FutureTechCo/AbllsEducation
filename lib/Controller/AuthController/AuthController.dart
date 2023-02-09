@@ -10,6 +10,7 @@ import 'package:get/get_core/src/get_main.dart';
 import '../../Utils/HelperError.dart';
 import '../../model/User_profile.dart';
 
+import '../SharedPreferences/SharedPreferences.dart';
 import 'GetxLogin.dart';
 
 class FirebaseAuhController with Helper {
@@ -27,6 +28,9 @@ class FirebaseAuhController with Helper {
       log('user  => ${UserC.user!.uid}');
 
       LoginGetx().to.SetI(UserC.user!.uid);
+      LoginGetx().to.SetEmail(UserC.user!.email.toString());
+      await SharedPreferencesApp().SaveIdUser(Idu: UserC.user!.uid);
+
       bool a = await emailVerified_user(UserC, context);
       return a;
     } on FirebaseAuthException catch (e) {
@@ -87,10 +91,11 @@ class FirebaseAuhController with Helper {
           .then((value) async {
         return value;
       });
-      await LoginGetx().to.getUseur(userC.user!.uid);
+   //   await LoginGetx().to.getUseur(userC.user!.uid);
 
       LoginGetx().to.SetI(userC.user!.uid);
-      //await SharedPreferencesApp().SaveIdUser(Idu: userC.user!.uid);
+      LoginGetx().to.SetEmail(userC.user!.email.toString());
+      await SharedPreferencesApp().SaveIdUser(Idu: userC.user!.uid);
       return true;
       // return await emailVerified_user(userC, context);
     } on FirebaseException catch (e) {
@@ -100,12 +105,6 @@ class FirebaseAuhController with Helper {
       print("خطاء غير متوقع$e");
     }
     return false;
-  }
-  deletuser(email,password)async{
-    UserCredential     userC = await _firebaseAuth
-        .signInWithEmailAndPassword(email: email, password: password);
-
-    await userC.user?.delete();
   }
 
   bool get isLoggedIn => _firebaseAuth.currentUser != null;

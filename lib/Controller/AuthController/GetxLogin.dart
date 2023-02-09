@@ -6,16 +6,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../Screens/START _LOGIN/Information_Screen.dart';
 import '../../Screens/START _LOGIN/LoginScreen.dart';
+import '../../Screens/START _LOGIN/SingIn.dart';
+import '../../Screens/START _LOGIN/infrmation.dart';
 import '../../Screens/pplication interface/home.dart';
 import '../../Utils/CheckPassword.dart';
 import '../../Utils/HelperError.dart';
 import '../../model/User_profile.dart';
 
 import '../HomeGetxVar.dart';
+import '../SharedPreferences/SharedPreferences.dart';
 import '../firebase_Controller/firebaseUser.dart';
 import 'AuthController.dart';
+import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
+
+import 'InfoGetController.dart';
 
 class LoginGetx extends GetxController with Helper {
   LoginGetx get to => Get.find();
@@ -76,8 +81,7 @@ class LoginGetx extends GetxController with Helper {
   final TextEditingController UPasswordController = TextEditingController();
   final TextEditingController AddCommit = TextEditingController();
   /*aDD cOMMIT*/
-  user Userem=user(Name: 'زائر', number: 1, city: 'الدينة ', email: 'الايميل', contre: 'الدولة',
-      password: '', ID_User: 'ID_User', UrlImage: 'UrlImage', path: '0');
+  user Userem=user();
 
   late  TextEditingController PNameController= TextEditingController();
   TextEditingController PCityController =  TextEditingController();
@@ -128,11 +132,7 @@ class LoginGetx extends GetxController with Helper {
     print('****************');
 
 
-    Userem=user(Name: name,
-        number:number,
-        city: city, email: email, contre: contre,
-        password: 'password', ID_User: data['Id_user'].toString()
-        , UrlImage: data['User_Image'].toString(), path: data['Path'].toString());
+    Userem=user();
     SetUrlImage(data['User_Image'].toString());
     print('-***********--------------');
     return Userem.path;
@@ -150,11 +150,7 @@ class LoginGetx extends GetxController with Helper {
     //int.parse(data['number'])
     number=11;
     print('****************');
-    Userem=user(Name: name,
-        number:number,
-        city: city, email: email, contre: contre,
-        password: 'password', ID_User: data['Id_user'].toString()
-        , UrlImage: data['User_Image'].toString(), path: data['Path'].toString());
+    Userem=user();
     SetUrlImage(data['User_Image'].toString());
     pthe= data['Path'];
 
@@ -165,11 +161,12 @@ class LoginGetx extends GetxController with Helper {
     CheckPasswordAndEmail().Check(SPasswordController.text,
         SPasswordConfirmController.text, SEmailController.text, context);
     await FirebaseAuhController()
-        .CreateAccount(
+          .CreateAccount(
         context: context,
         eamil: SEmailController.value.text,
         password: SPasswordController.value.text)
         .then((value) {
+          Navigator.pushReplacementNamed(context, '/InformationScreen');
       log('Id_user => ' + Id_user);
     });
   }
@@ -195,8 +192,8 @@ class LoginGetx extends GetxController with Helper {
   }
 
   bool checkData({required BuildContext context}) {
-    if (EmailController.text.isNotEmpty
-        && PasswordController.text.isNotEmpty) {
+    if (InfoGetController.to.email_Login.text.isNotEmpty
+        &&InfoGetController.to.password_Login.text.isNotEmpty) {
       return true;
     }
     ShowSnackBar(
@@ -207,26 +204,14 @@ class LoginGetx extends GetxController with Helper {
   Future<bool> login({required BuildContext context}) async {
     bool status = await FirebaseAuhController().singin(
         context: context,
-        email: EmailController.text,
-        password: PasswordController.text);
+        email: InfoGetController.to.email_Login.text,
+        password: InfoGetController.to.password_Login.text);
     if (status) {
+     // SharedPreferencesApp().SaveIdUser(Idu: '123123123');
       print('*************************************1231564564');
-
-      print(pthe);
-      if(pthe=='0'){
-        Get.to(()=>home());
-        // Navigator.pushReplacementNamed(context, '/index_Screen');
-      }
-      else if(pthe=='1'){
-       // Get.to(()=>control_Board());
-        //  Navigator.pushReplacementNamed(context, '/control_Board');
-      }
-
-
-
-      HomeGetxVar().to.UpdateIndex(0);
-      EmailController.text = '';
-      PasswordController.text = '';
+      Navigator.pushReplacementNamed(context, routapp.home);
+      InfoGetController.to.email_Login.text = '';
+      InfoGetController.to.password_Login.text = '';
       return true;
     } else {
       ShowSnackBar(
@@ -269,92 +254,17 @@ class LoginGetx extends GetxController with Helper {
   }
 
 
-  Future<void> performCreateAccount_Admen({required BuildContext context}) async {
-    if (checkDataCreateAccount_Admen(context: context)) {
-      await CreateAccount_Admen(context: context);
-    }
-  }
 
 
-  bool checkDataCreateAccount_Admen({required BuildContext context}) {
-    return CheckPasswordAndEmail().Check(
-        APasswordController.value.text,
-        APasswordController.value.text,
-        AEmailController.value.text,
-        context);
-  }
-
-  Future<void> CreateAccount_Admen({required BuildContext context}) async {
-    bool status = await FirebaseAuhController().CreateAccount(
-        context: context,
-        eamil:   AEmailController.text,
-        password: APasswordController.text);
-    if (status) {
-      SetEmail(AEmailController.text);
-      user User=user(Name: ANameController.text, number: 1, city: 'city', email: AEmailController.text, contre: 'contre',
-          password: APasswordController.text, ID_User: Id_user, UrlImage: '', path: '1');
-      await firebaseUser().addNewUser(User);
-      clear_Admen();
-    }
-  }
-
-  void clear_Admen() {
-    AEmailController.text = '';
-    APasswordController.text = '';
-    ANameController.text='';
-    AScandNameController.text='';
-  }
-
-
-
-  Future<bool> performCreateAccount_Admen_user({required BuildContext context}) async {
-    if (checkDataCreateAccount_Admen_user(context: context)) {
-      bool stetes= await CreateAccount_Admen_user(context: context);
-      return stetes;
-    }else{
-      return false;
-    }
-  }
-
-
-  bool checkDataCreateAccount_Admen_user({required BuildContext context}) {
-    return CheckPasswordAndEmail().Check(
-        UPasswordController.value.text,
-        UPasswordController.value.text,
-        UEmailController.value.text,
-        context);
-  }
-
-  Future<bool> CreateAccount_Admen_user({required BuildContext context}) async {
-    bool status = await FirebaseAuhController().CreateAccount(
-        context: context,
-        eamil:   UEmailController.text,
-        password: UPasswordController.text);
-    if (status) {
-      SetEmail(UEmailController.text);
-      user User=user(Name: UNameController.text, number: 1, city: 'city', email: UEmailController.text, contre: 'contre',
-          password: UPasswordController.text, ID_User: Id_user, UrlImage: '', path: '0');
-      await firebaseUser().addNewUser(User);
-      clear_Admen_user();
-      return status;
-    }else{return false;}
-  }
-
-  void clear_Admen_user() {
-    UEmailController.text = '';
-    UPasswordController.text = '';
-    UNameController.text='';
-    UScandNameController.text='';
-  }
-
-  Future<void> logout() async {
+  Future<void> logout(context) async {
     await FirebaseAuhController().SignOut();
-   // await SharedPreferencesApp().clearData();
+    await SharedPreferencesApp().clearData();
     Userem.Name = '';
     name = '';
     number = 0;
     city = '';
     contre = '';
-    Get.offAll(() => LoginScreen());
+    Navigator.pushReplacementNamed(context, routapp.SignInScreen);
+
   }
 }
