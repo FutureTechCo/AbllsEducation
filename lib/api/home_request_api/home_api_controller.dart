@@ -14,6 +14,7 @@ class HomeApiController {
     var url = Uri.parse(SettingApiUri.Levels);
     var response = await http.get(url);
     if (response.statusCode == 200) {
+      print('ppppppp');
       DataResult = <levels_model_response>[];
       jsonDecode(response.body).forEach((e) {
         DataResult.add(levels_model_response.fromJson(e));

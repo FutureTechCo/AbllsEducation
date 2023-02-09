@@ -46,6 +46,7 @@ class routapp {
   static const String RegisterScreen ='/RegisterScreen';
   static const String MonthlySubscription ='/MonthlySubscription';
   static const String block_reselt='/block_reselt';
+  static const String results ='/results';
 }
 
 class AppRouts {
@@ -56,6 +57,10 @@ class AppRouts {
       case routapp.pageViewRoutScreen:
         return MaterialPageRoute(
           builder: (context) => const PageViewScreen(),
+        );
+      case routapp.results:
+        return MaterialPageRoute(
+          builder: (context) => const reselt(),
         );
       case routapp.InformationScreen:
         return MaterialPageRoute(

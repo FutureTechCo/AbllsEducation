@@ -126,7 +126,7 @@ class DrawerApp extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context, routapp.block_reselt);
+            Navigator.pushNamed(context, routapp.results);
            
 
 

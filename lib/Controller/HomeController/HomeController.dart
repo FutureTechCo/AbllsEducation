@@ -28,7 +28,7 @@ class HomeController extends myGet.GetxController{
         DataResult = <levels_model_response>[];
         DataResult = value;
       });
-       update(['GetDataLevels']);
+       update();
    }
    Future<void> getDataCategories({required String search})async{
      var listRsult = <Categories>[];
@@ -45,7 +45,7 @@ class HomeController extends myGet.GetxController{
     }
    void SetIndexPage(value){
      selectedPage = value;
-     update(['GetDataLevels']);
+     update();
    }
    void SetVideos(value){
      object = value;
