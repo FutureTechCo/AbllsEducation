@@ -6,13 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../Controller/AuthController/userController.dart';
+
 class CstomAppar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       height: 88.h,
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
         color: Color(0xffF6F6F6),
         boxShadow: [
           BoxShadow(
@@ -31,7 +32,8 @@ class CstomAppar extends StatelessWidget {
         child: Directionality(
             textDirection: TextDirection.rtl,
             child: Padding(
-              padding:   EdgeInsets.symmetric(horizontal: 2*8.0.h,vertical: 2*8.h),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 2 * 8.0.h, vertical: 2 * 8.h),
               child: Row(
                 children: [
                   SizedBox(
@@ -40,10 +42,17 @@ class CstomAppar extends StatelessWidget {
                       child: Row(
                         children: [
                           Container(
-                            width: 45.w,height: 45.h,
-                            child: userController.to.avatar==null? Image.network(
-                                'https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png')
-                                :Image.network(userController.to.avatar),
+                            width: 45.w,
+                            height: 45.h,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(90.r)),
+                            child: userController.to.avatar != null
+                                ? Image.network(
+                                    userController.to.avatar,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.asset('assets/download.png'),
                           ),
                           SizedBox(width: 10.w),
                           Column(
@@ -58,7 +67,9 @@ class CstomAppar extends StatelessWidget {
                                     color: Color(0xff707070)),
                               ),
                               Text(
-                                userController.to.name==null?'':userController.to.name,
+                                userController.to.name == null
+                                    ? ''
+                                    : userController.to.name,
                                 style: TextStyle(
                                     fontSize: 18.sp,
                                     fontWeight: FontWeight.bold,
@@ -71,9 +82,8 @@ class CstomAppar extends StatelessWidget {
                       )),
                   SizedBox(width: 80.w),
                   InkWell(
-                    onTap: (){
-                      Navigator.pushNamed(
-                          context, routapp.FindeLevel);
+                    onTap: () {
+                      Navigator.pushNamed(context, routapp.FindeLevel);
                     },
                     child: Container(
                         height: 40.w,
@@ -97,7 +107,7 @@ class CstomAppar extends StatelessWidget {
                   ),
                   SizedBox(width: 16.w),
                   InkWell(
-                    onTap: ()  {
+                    onTap: () {
                       Scaffold.of(context).openEndDrawer();
                     },
                     child: Container(

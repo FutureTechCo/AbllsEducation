@@ -23,8 +23,7 @@ import 'package:abllseducation/Screens/Profile/ProfileScreen.dart';
 
 import '../Screens/sub_screen/block_reselt.dart';
 import '../Screens/sub_screen/reselt.dart';
-import '../Screens/sub_screen/results.dart';
-class routapp {
+ class routapp {
   static const String initialRoute = '/';
   static const String pageViewRoutScreen = '/PageViewScreen';
   static const String InformationScreen = '/InformationScreen';

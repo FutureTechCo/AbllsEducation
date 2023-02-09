@@ -7,7 +7,7 @@ import 'package:get/get.dart' as myGet;
 class HomeController extends myGet.GetxController{
   static  HomeController get  to => myGet.Get.find();
   final GlobalKey<ScaffoldState> key = GlobalKey();
-  int selectedPage = 0;
+  var selectedPage = 0.obs;
   late PageController pageController = PageController(initialPage: 0);
    List<levels_model_response> DataResult = [];
    List<Categories> DataResultCategories = [];
@@ -43,10 +43,9 @@ class HomeController extends myGet.GetxController{
      log(listRsult.length.toString());
      update();
     }
-   void SetIndexPage(value){
-     selectedPage = value;
-     update();
-   }
+   void SetIndexPage(int value){
+     selectedPage.value = value;
+    }
    void SetVideos(value){
      object = value;
      update();

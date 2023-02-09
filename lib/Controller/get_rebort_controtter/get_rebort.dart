@@ -10,7 +10,7 @@ class get_rebort extends myGet.GetxController{
   static  get_rebort get  to => myGet.Get.find();
   final GlobalKey<ScaffoldState> key = GlobalKey();
   List<Level> DataResult = [];
-  Level level=Level();
+  Level level= Level();
       Videos object = Videos();
   String tapTitle = '';
   var percent =0.0 ;
@@ -27,7 +27,11 @@ class get_rebort extends myGet.GetxController{
     await reboet_Api().getrebort(cus_id: cus_id).then((value) {
       DataResult = <Level>[];
       DataResult = value!;
+<<<<<<< HEAD
       update();
+=======
+      update(['DataResultLevels']);
+>>>>>>> 473b0ce (level2)
     });
 
   }
@@ -59,7 +63,7 @@ class get_rebort extends myGet.GetxController{
   //  print(level.name);
     update();
   }
- void SetVideos(value){
+  void SetVideos(value){
 
     object = value;
 

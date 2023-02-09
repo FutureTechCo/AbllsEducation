@@ -17,7 +17,11 @@ class widjet_level extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
+<<<<<<< HEAD
       padding: const EdgeInsets.all(6.0),
+=======
+      padding:   EdgeInsets.all(6.0.r),
+>>>>>>> 473b0ce (level2)
       child: Container(
         width:328.w,
         height: 50.h,
@@ -28,10 +32,10 @@ class widjet_level extends StatelessWidget {
                 Navigator.pushNamed(context, '/block_reselt');
               },
               child: Container(
-                width: 320.w,
+                width: 324.w,
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.r),
                     color: Colors.white,
 
                     boxShadow: [
@@ -43,13 +47,13 @@ class widjet_level extends StatelessWidget {
                 child:LinearPercentIndicator(
                   padding: EdgeInsets.zero,
                   backgroundColor: Colors.white,
-                  width: 324.0,
+                  width: 324.0.r,
                   animation: true,
                   animationDuration: 1000,
-                  lineHeight:40.0,
+                  lineHeight:40.0.h,
                   percent: percent,
                   center: Text(titel,style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 22.sp,
                       fontWeight: FontWeight.bold,
                       color: Color(0xff003298)
 
@@ -61,10 +65,9 @@ class widjet_level extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 7,
-              left: 310,
+              top: 8.h,
+              left: 285.h,
               child: InkWell(
-
                 child: Container(
                   height: 21.h,
                   width: 21.w,

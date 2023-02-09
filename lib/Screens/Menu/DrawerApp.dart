@@ -36,8 +36,19 @@ class DrawerApp extends StatelessWidget {
                   InkWell(
                       onTap: ()=> Scaffold.of(context).closeEndDrawer(),
                       child: CircleAvatar(child: Icon(Icons.close),backgroundColor: Colors.white,)),
-                  userController.to.avatar==null?Image.network('https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png',width: 64.w,height: 64.h,)
-                      :Image.network(userController.to.avatar,width: 64.w,height: 64.h,),
+                       Container(
+                         width: 64.w,
+                         height: 64.h,
+                         clipBehavior: Clip.antiAlias,
+                         decoration: BoxDecoration(
+                             borderRadius: BorderRadius.circular(90.r)),
+                         child: userController.to.avatar != null
+                             ? Image.network(
+                           userController.to.avatar,
+                           fit: BoxFit.cover,
+                         )
+                             : Image.asset('assets/download.png'),
+                       ),
                 ],
               ),
               SizedBox(height: 9.h,),

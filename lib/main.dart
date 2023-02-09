@@ -1,12 +1,12 @@
 import 'package:abllseducation/Controller/AuthController/InfoGetController.dart';
 import 'package:abllseducation/Controller/HomeController/ProfileController.dart';
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
+import 'package:abllseducation/pdf.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pod_player/pod_player.dart';
-
 import 'Controller/AuthController/GetxLogin.dart';
 import 'Controller/AuthController/userController.dart';
 import 'Controller/HomeController/HomeController.dart';
@@ -19,7 +19,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   PodVideoPlayer.enableLogs = true;
   await Firebase.initializeApp();
-
+  createPdf.init();
   Get.put(InfoGetController());
   Get.put(menuController());
   Get.put(ProfileController());
