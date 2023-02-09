@@ -18,6 +18,7 @@ class reselt extends StatefulWidget {
 class _reseltState extends State<reselt> {
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder<get_rebort>(
       id: 'DataResultLevels',
         builder: (controller){
