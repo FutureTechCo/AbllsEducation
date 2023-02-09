@@ -13,6 +13,7 @@ class get_rebort extends myGet.GetxController{
   Level level=Level();
       Videos object = Videos();
   String tapTitle = '';
+  var percent =0.0 ;
   @override
   void onInit()async{
     // await getDataCategories(Search: search.text);
@@ -25,9 +26,26 @@ class get_rebort extends myGet.GetxController{
   Future<void> getrebort({required cus_id})async{
     await reboet_Api().getrebort(cus_id: cus_id).then((value) {
       DataResult = <Level>[];
-      DataResult = value;
+      DataResult = value!;
     });
-    update(['GetLevels']);
+    update();
+  }
+ Future<void> get_pasent({required cus_id})async{
+    var totel;
+    var vieo_wathaed;
+    await getrebort(cus_id: cus_id);
+       for(int i =0 ;i<DataResult.length;i++){
+        totel+= DataResult[i].categories?.length;
+        for(int j=0 ; j<DataResult[i].categories!.length ; j++){
+          for(int x =0;x<DataResult[i].categories![j].videos!.length;x++){
+         if(DataResult[i].categories![j].videos![x].isWatched!){
+           vieo_wathaed++;
+         }
+          }
+        }
+       }
+    percent =( totel/vieo_wathaed);
+       update();
   }
 
   Future<void> getLevel({required cus_id,required level_id})async{

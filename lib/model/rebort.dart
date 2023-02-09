@@ -15,7 +15,27 @@ class rebort {
     return data;
   }
 }
+class rebort_cust {
+  List<Level>? Leveles;
 
+  rebort_cust({this.Leveles});
+
+  rebort_cust.fromJson(Map<String, dynamic> json) {
+    if (json['levels'] != null) {
+      Leveles = <Level>[];
+      json['levels'].forEach((v) {
+        Leveles!.add(new Level.fromJson(v));
+      });
+    }  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.Leveles != null) {
+      data['levels'] = this.Leveles!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
 class Level {
   int? id;
   String? name;

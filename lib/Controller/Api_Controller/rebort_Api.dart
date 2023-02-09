@@ -27,15 +27,17 @@ class reboet_Api{
     report x =report();
     return  x ;
   }*/
-  Future<List<Level>> getrebort({required cus_id}) async {
-    List<Level> DataResult;
+  Future<List<Level>?> getrebort({required cus_id}) async {
+    List<Level>? DataResult;
     var  url = Uri.parse("${SettingApiUri.report}cus_id=$cus_id");
     var response = await http.get(url);
     if (response.statusCode == 200) {
       DataResult = <Level>[];
-      jsonDecode(response.body).forEach((e) {
-        DataResult.add(Level.fromJson(e));
-      });
+      var Rebort =jsonDecode(response.body);
+      rebort_cust x =rebort_cust.fromJson(Rebort);
+
+      DataResult =x.Leveles;
+      print(DataResult![0].name);
       return DataResult;
     }
     return [];
