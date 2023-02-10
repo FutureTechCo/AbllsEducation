@@ -32,12 +32,15 @@ class get_rebort extends myGet.GetxController{
     });
 
   }
+  var totel;
+  var vieo_wathaed;
  get_pasent({required cus_id})async{
-    var totel;
-    var vieo_wathaed;
+
     await getrebort(cus_id: cus_id);
        for(int i =0 ;i<DataResult.length;i++){
         totel+= DataResult[i].categories?.length;
+
+
         for(int j=0 ; j<DataResult[i].categories!.length ; j++){
           for(int x =0;x<DataResult[i].categories![j].videos!.length;x++){
          if(DataResult[i].categories![j].videos![x].isWatched!){
@@ -46,8 +49,8 @@ class get_rebort extends myGet.GetxController{
           }
         }
        }
-    percent =( totel/vieo_wathaed);
-
+    percent =0.0;
+       print (percent);
   }
 
   Future<void> getLevel({required cus_id,required level_id})async{

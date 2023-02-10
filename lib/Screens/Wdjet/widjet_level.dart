@@ -1,3 +1,4 @@
+import 'package:abllseducation/Screens/sub_screen/block_reselt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -23,47 +24,46 @@ class widjet_level extends StatelessWidget {
         height: 50.h,
         child: Stack(
           children: [
-            InkWell(
-              onTap: (){
-                Navigator.pushNamed(context, '/block_reselt');
-              },
-              child: Container(
-                width: 324.w,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.r),
-                    color: Colors.white,
+            Container(
+              width: 324.w,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.r),
+                  color: Colors.white,
 
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xff003298),
-                        spreadRadius: 2,
-                      )]
-                ),
-                child:LinearPercentIndicator(
-                  padding: EdgeInsets.zero,
-                  backgroundColor: Colors.white,
-                  width: 324.0.r,
-                  animation: true,
-                  animationDuration: 1000,
-                  lineHeight:40.0.h,
-                  percent: percent,
-                  center: Text(titel,style: TextStyle(
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff003298)
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xff003298),
+                      spreadRadius: 2,
+                    )]
+              ),
+              child:LinearPercentIndicator(
+                padding: EdgeInsets.zero,
+                backgroundColor: Colors.white,
+                width: 324.0.r,
+                animation: true,
+                animationDuration: 1000,
+                lineHeight:40.0.h,
+                percent: percent,
+                center: Text(titel,style: TextStyle(
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff003298)
 
-                  ),),
+                ),),
 
-                  linearStrokeCap: LinearStrokeCap.roundAll,
-                  progressColor: Color(0xff00FF00),
-                ),
+                linearStrokeCap: LinearStrokeCap.roundAll,
+                progressColor: Color(0xff00FF00),
               ),
             ),
             Positioned(
               top: 8.h,
               left: 285.h,
               child: InkWell(
+                onTap: (){ Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  block_reselt(cust_id, level_id)),
+                );},
                 child: Container(
                   height: 21.h,
                   width: 21.w,

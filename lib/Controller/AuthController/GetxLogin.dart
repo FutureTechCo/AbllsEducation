@@ -13,6 +13,7 @@ import '../../Screens/pplication interface/home.dart';
 import '../../Utils/CheckPassword.dart';
 import '../../Utils/HelperError.dart';
 import '../../model/User_profile.dart';
+import '../../Controller/AuthController/userController.dart';
 
 import '../HomeGetxVar.dart';
 import '../SharedPreferences/SharedPreferences.dart';
@@ -207,8 +208,10 @@ class LoginGetx extends GetxController with Helper {
         email: InfoGetController.to.email_Login.text,
         password: InfoGetController.to.password_Login.text);
     if (status) {
-     // SharedPreferencesApp().SaveIdUser(Idu: '123123123');
-      print('*************************************1231564564');
+      //SharedPreferencesApp().SaveIdUser(Idu: '123123123');
+      print(SharedPreferencesApp().GetIdUser);
+      userController.to.get_data_user(id: SharedPreferencesApp().GetIdUser);
+
       Navigator.pushReplacementNamed(context, routapp.home);
       InfoGetController.to.email_Login.text = '';
       InfoGetController.to.password_Login.text = '';
@@ -259,6 +262,7 @@ class LoginGetx extends GetxController with Helper {
   Future<void> logout(context) async {
     await FirebaseAuhController().SignOut();
     await SharedPreferencesApp().clearData();
+    userController.to.cler_data();
     Userem.Name = '';
     name = '';
     number = 0;

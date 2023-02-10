@@ -23,15 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-        ),
+
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0.h),
@@ -50,7 +42,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 'اختيار المهارات التي تظهر في سن معينة',
                 style: TextStyle(
                   fontFamily: HomeGetxVar().to.font_Family,
-                  color: HomeGetxVar().to.color6,
+                  color: Color(0xff336BA4),
                   fontSize: 17.sp,
                   fontWeight: FontWeight.bold,
                 ),
@@ -65,7 +57,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: CustomTextField(
                       controller: LoginGetx().to.SEmailController,
                       inputType: LoginGetx().to.email_input,
-                      color: HomeGetxVar().to.color6,
+                      color: Color(0xff336BA4),
                       hintText: 'البريد الالكتروني',
                       icon_data: Icons.person)),
               SizedBox(
@@ -91,7 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       controller: LoginGetx().to.SPasswordConfirmController,
                       inputType: LoginGetx().to.text_input,
                       color: Color(0xff336BA4),
-                      hintText: 'البريد الالكتروني',
+                      hintText: 'كلمة المرور',
                       icon_data: Icons.lock)),
 
               SizedBox(

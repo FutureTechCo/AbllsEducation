@@ -63,26 +63,55 @@ class _SignInState extends State<SignIn> {
                   SizedBox(
                     height: 12.h,
                   ),
-                  Padding(
-                    padding:   EdgeInsets.only(right: 15.0.h),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, routapp.FroGetScreen);
-                         },
-                        child: Text(
-                          'نسيت كلمة المرور؟',
-                          style: TextStyle(
-                            color: Color(0xff336BA4),
-                            fontFamily: 'Arial',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w400,
-                            decoration: TextDecoration.underline,
+                  Container(
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding:   EdgeInsets.only(right: 15.0.h),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, routapp.RegisterScreen);
+                               },
+                              child: Text(
+                                'انشاء حساب',
+                                style: TextStyle(
+                                  color: Color(0xff336BA4),
+                                  fontFamily: 'Arial',
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w400,
+                                  decoration: TextDecoration.underline,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                            ),
                           ),
-                          textAlign: TextAlign.left,
                         ),
-                      ),
+                        Spacer(),
+                        Padding(
+                          padding:   EdgeInsets.only(right: 15.0.h),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, routapp.FroGetScreen);
+                              },
+                              child: Text(
+                                'نسيت كلمة المرور؟',
+                                style: TextStyle(
+                                  color: Color(0xff336BA4),
+                                  fontFamily: 'Arial',
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w400,
+                                  decoration: TextDecoration.underline,
+                                ),
+                                textAlign: TextAlign.left,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(

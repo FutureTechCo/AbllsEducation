@@ -4,10 +4,14 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 
 import '../../Controller/get_rebort_controtter/get_rebort.dart';
+import '../../model/rebort.dart';
 import '../Wdjet/Cstom AppBar_block_reselt.dart';
 
 class block_reselt extends StatelessWidget {
-
+  block_reselt(cus_id,level_id){
+    this.cus_id=cus_id;
+    this.level_id=level_id;
+  }
   String cus_id='asd32qw1e5qw46e';
 
   String level_id='1';
@@ -19,6 +23,7 @@ class block_reselt extends StatelessWidget {
         id: 'GetLevels',
         builder: (controller){
           print('@@@@@@@@@@@');
+          controller.level= Level();
           return Scaffold(
             key: controller.key,
             body: FutureBuilder<void>(
@@ -26,9 +31,9 @@ class block_reselt extends StatelessWidget {
                     cus_id: cus_id, level_id: level_id),
 
                 builder: (context, snapshot) {
-                  print("kjhkjh${controller.level.name}");
+        //          print("kjhkjh${controller.level.name}");
 
-                  if (controller.level != null) {
+                  if (snapshot.connectionState==ConnectionState.done) {
                     return SafeArea(
                         child: Column(
                       children: [
@@ -71,7 +76,7 @@ class block_reselt extends StatelessWidget {
                                           color: Color(0xff003298)),
                                     )),
                                   ),
-                                  for (int j = 0;    j < controller.level.categories!.length;  j++)
+                                  for (int j = 0;j < controller.level.categories!.length;  j++)
                                     Row(
                                       children: [
                                         for (int k = 0;
@@ -147,12 +152,14 @@ class block_reselt extends StatelessWidget {
                             )),
                       ],
                     ));
-                  } else if (controller.DataResult.length == 0) {
+                  } else if (snapshot.connectionState==ConnectionState.waiting) {
                     return Center(
                       child: CircularProgressIndicator(),
                     );
                   } else {
                     return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.warning_rounded,

@@ -4,6 +4,8 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+import '../../Controller/AuthController/GetxLogin.dart';
+import '../../Controller/SharedPreferences/SharedPreferences.dart';
 import '../../Controller/get_rebort_controtter/get_rebort.dart';
 import '../Wdjet/CstomAppBar_sup.dart';
 import '../Wdjet/widjet_level.dart';
@@ -18,21 +20,18 @@ class reselt extends StatefulWidget {
 class _reseltState extends State<reselt> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<get_rebort>(
-      id: 'DataResultLevels',
-        builder: (controller){
-           return Scaffold(
+    return   Scaffold(
               body: FutureBuilder<void>(
-                  future: controller.get_pasent(
-                      cus_id: 'asd32qw1e5qw46e'),
+                  future: get_rebort.to.get_pasent(
+                      cus_id: SharedPreferencesApp().GetIdUser),
                   builder: (context, snapshot) {
                    // print("kjhkjh${controller.DataResult[1].name}");
-                    if (controller.DataResult.isNotEmpty) {
+                    if (get_rebort.to.DataResult.isNotEmpty) {
                       return  Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CstomAppBar_sup(list: controller.DataResult),
+                          CstomAppBar_sup(list: get_rebort.to.DataResult),
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Text('ما تم إنجازه من الأنشطة',style: TextStyle(
@@ -47,10 +46,10 @@ class _reseltState extends State<reselt> {
                               padding:EdgeInsets.symmetric(horizontal: 10.h),
                               child: ListView(
                                 children: [
-                                  for (int j = 0;    j < controller.DataResult.length;  j++)
-                                    if(controller.DataResult[j]!=null)
-                                  widjet_level(percent:controller.percent ,titel:controller.DataResult[j].name
-                                      ,level_id:"${controller.DataResult[j].id}",cust_id:'asd32qw1e5qw46e')
+                                  for (int j = 0; j < get_rebort.to.DataResult.length;  j++)
+                                    if(get_rebort.to.DataResult[j]!=null)
+                                  widjet_level(percent:get_rebort.to.percent ,titel:get_rebort.to.DataResult[j].name
+                                      ,level_id:"${get_rebort.to.DataResult[j].id}",cust_id:SharedPreferencesApp().GetIdUser)
                                 ],
                               ),
                              ),
@@ -58,7 +57,7 @@ class _reseltState extends State<reselt> {
 
                         ],
                       );
-                    } else if (controller.DataResult.length == 0) {
+                    } else if (get_rebort.to.DataResult.length == 0) {
                       return Center(
                         child: CircularProgressIndicator(),
                       );
@@ -83,7 +82,7 @@ class _reseltState extends State<reselt> {
                   })
 
           );
-        });
+
 
   }
 }

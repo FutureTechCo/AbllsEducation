@@ -59,6 +59,7 @@ class user_controler {
     var response = await http.get(url );
     print(response.statusCode);
     if (response.statusCode == 200) {
+      print("**********8");
      var usser=jsonDecode(response.body);
      user_n x =user_n.fromJson(usser);
       return x;

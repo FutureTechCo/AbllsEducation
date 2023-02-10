@@ -6,6 +6,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 
 import 'Controller/AuthController/GetxLogin.dart';
 import 'Controller/AuthController/userController.dart';
+
 import 'Controller/SharedPreferences/SharedPreferences.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

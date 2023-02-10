@@ -6,6 +6,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import '../../model/User_profile.dart';
 import '../../model/user_n.dart';
 import '../Api_Controller/data_user_Api.dart';
+import '../SharedPreferences/SharedPreferences.dart';
 import 'GetxLogin.dart';
 
 class userController extends GetxController{
@@ -38,7 +39,12 @@ return User;
 }
 Future<bool>add_user({required user_n user})async{
 
- return await user_controler().addUser(User:user );
+ bool x= await user_controler().addUser(User:user );
+ if(x){
+ get_data_user(id: SharedPreferencesApp().GetIdUser);
+
+ }
+ return x;
 }
   ubdet_user({required user User})async{
 
@@ -54,5 +60,15 @@ Future<bool>add_user({required user_n user})async{
   phone =User.phone!;
   email =User.email!;
   update();
+  }
+  cler_data(){
+
+    avatar ='';
+    name= '';
+    id ='';
+    country ='';
+    phone ='';
+    email ='';
+    update();
   }
 }

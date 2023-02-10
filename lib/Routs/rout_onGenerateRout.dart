@@ -69,10 +69,10 @@ class AppRouts {
         return MaterialPageRoute(
           builder: (context) => LoginScreen(),
         );
-      case routapp.block_reselt:
+     /* case routapp.block_reselt:
         return MaterialPageRoute(
           builder: (context) => block_reselt(),
-        );
+        );*/
       case routapp.home:
         return MaterialPageRoute(
           builder: (context) => home(),
