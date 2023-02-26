@@ -22,6 +22,8 @@ class HomeController extends myGet.GetxController{
    void onClose(){
      pageController.dispose();
       super.onClose();
+
+
    }
    Future<void> getDataLevel()async{
       await HomeApiController().getAllLevels().then((value) {
