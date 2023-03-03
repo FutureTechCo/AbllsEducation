@@ -36,6 +36,7 @@ class levels_model_response {
 class Categories {
   late int id;
   late String name;
+  late String letter;
   late List<Videos> videos;
 
   @override
@@ -43,11 +44,12 @@ class Categories {
     return 'Categories{id: $id, name: $name, videos: $videos}';
   }
 
-  Categories({required this.id, required this.name, required this.videos});
+  Categories({required this.id, required this.name, required this.videos, required this.letter});
 
   Categories.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
+    letter = json['letter'];
     if (json['videos'] != null) {
       videos = <Videos>[];
       json['videos'].forEach((v) {
@@ -72,15 +74,12 @@ class Categories {
   late int id;
   late String url;
   late String image;
-  late String target;
-  late String result;
-  late String answer;
 
   Videos();
 
   @override
   String toString() {
-    return 'Videos{title: $title, id: $id, url: $url, image: $image, target: $target, result: $result, answer: $answer}';
+    return 'Videos{title: $title, id: $id, url: $url, image: $image';
   }
 
   Videos.fromJson(Map<String, dynamic> json) {
@@ -88,9 +87,6 @@ class Categories {
     id = json['id'];
     url = json['url'];
     image = json['image'];
-    target = json['target'];
-    result = json['result'];
-    answer = json['answer'];
   }
 
   Map<String, dynamic> toJson() {
@@ -99,9 +95,6 @@ class Categories {
     data['id'] = this.id;
     data['url'] = this.url;
     data['image'] = this.image;
-    data['target'] = this.target;
-    data['result'] = this.result;
-    data['answer'] = this.answer;
-    return data;
+     return data;
   }
 }

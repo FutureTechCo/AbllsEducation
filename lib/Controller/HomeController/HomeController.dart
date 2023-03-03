@@ -13,6 +13,7 @@ class HomeController extends myGet.GetxController{
    List<Categories> DataResultCategories = [];
    Videos object = Videos();
    String tapTitle = '';
+   String levelname = '';
    @override
    void onInit()async{
      // await getDataCategories(Search: search.text);
@@ -53,6 +54,9 @@ class HomeController extends myGet.GetxController{
      update();
    }   void SetTapTitle(value){
      tapTitle = value;
+     update();
+   } void Setlevelname(value){
+    levelname = value;
      update();
    }
 

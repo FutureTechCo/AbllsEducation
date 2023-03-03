@@ -147,7 +147,8 @@ class home extends StatelessWidget {
                                                      onTap: () {
                                                        var Oject = HomeController.to.DataResult[i].categories[j].videos[k];
                                                        HomeController.to.SetVideos(Oject);
-                                                       HomeController.to.SetTapTitle(HomeController.to.DataResult[i].categories[j].name);
+                                                       HomeController.to.SetTapTitle(HomeController.to.DataResult[i].categories[j].letter);
+                                                       HomeController.to.Setlevelname(HomeController.to.DataResult[i].name);
                                                        log('messageVideos $Oject');
                                                        Navigator.pushNamed(
                                                            context, routapp.vadeo_screen);
@@ -165,7 +166,7 @@ class home extends StatelessWidget {
                                                            ]),
                                                        child: Center(
                                                          child: Text(
-                                                           HomeController.to.DataResult[i].categories[j].name+' - ${k+1}',
+                                                           HomeController.to.DataResult[i].categories[j].letter+' - ${k+1}',
                                                            style: TextStyle(
                                                              color: Color(0xffA6A6A6),
                                                              fontSize: 16,
@@ -188,7 +189,7 @@ class home extends StatelessWidget {
                                                      ]),
                                                  child: Center(
                                                      child: Text(
-                                                       HomeController.to.DataResult[i].categories[j].name,
+                                                       HomeController.to.DataResult[i].categories[j].letter,
                                                        style: TextStyle(
                                                          fontSize: 25,
                                                          color: Colors.white,

@@ -39,4 +39,13 @@ class HomeApiController {
     }
     return [];
   }
+  Future<void> WatchVideo({required String uid,required String vid})async{
+    var url = Uri.parse(SettingApiUri.watch);
+    var response = await http.post(url,body: {
+      'cus_id':uid,'video_id':vid
+    });
+    if (response.statusCode == 200) {
+      log('Done Watch Video');
+    }
+  }
 }

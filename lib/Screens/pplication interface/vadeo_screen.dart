@@ -1,11 +1,15 @@
 import 'dart:developer';
 
 import 'package:abllseducation/Controller/HomeController/HomeController.dart';
+import 'package:abllseducation/Controller/SharedPreferences/SharedPreferences.dart';
+import 'package:abllseducation/api/home_request_api/home_api_controller.dart';
 import 'package:abllseducation/model/levels_model_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 import 'package:pod_player/pod_player.dart';
+
+enum okORno { OK, NO }
 
 class vadeo_screen extends StatefulWidget {
   @override
@@ -31,11 +35,14 @@ class _vadeo_screenState extends State<vadeo_screen> {
     controller.dispose();
     super.dispose();
   }
+
   @override
   void deactivate() {
     // TODO: implement deactivate
     super.deactivate();
   }
+  okORno no = okORno.NO;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,13 +89,44 @@ class _vadeo_screenState extends State<vadeo_screen> {
             SizedBox(
               height: 15.h,
             ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  ' : عنوان الفيديو',
+                  style: TextStyle(
+                    fontSize: 22.sp,
+                    fontFamily: 'Arial',
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff003298),
+                  ),
+                ),
+                SizedBox(
+                  width: 5.w,
+                ),
+                Text(
+                  HomeController.to.object.title,
+                  style: TextStyle(
+                      fontSize: 20.sp,
+                      fontFamily: 'Arial',
+                      fontWeight: FontWeight.w400),
+                ),
+                Divider(
+                  color: Colors.black,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 8.h,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  HomeController.to.object.title,
+                  ':',
                   style: TextStyle(
-                    fontSize: 20.sp,
+                    fontSize: 22.sp,
                     fontFamily: 'Arial',
                     fontWeight: FontWeight.bold,
                     color: Color(0xff003298),
@@ -98,27 +136,73 @@ class _vadeo_screenState extends State<vadeo_screen> {
                   width: 3.w,
                 ),
                 Text(
+                  'أسم المهمه',
+                  style: TextStyle(
+                    fontSize: 22.sp,
+                    fontFamily: 'Arial',
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff003298),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            Text(
+              HomeController.to.tapTitle,
+              style: TextStyle(
+                  fontSize: 20.sp,
+                  fontFamily: 'Arial',
+                  fontWeight: FontWeight.w400),
+            ),
+            SizedBox(
+              height: 8.h,
+            ),
+            Divider(
+              color: Colors.black,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
                   ':',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 20),
+                    fontSize: 22.sp,
+                    fontFamily: 'Arial',
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff003298),
+                  ),
                 ),
                 SizedBox(
                   width: 3.w,
                 ),
                 Text(
-                  HomeController.to.tapTitle,style: TextStyle(
-                  fontSize: 20.sp,
-                  fontFamily: 'Arial',
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-                ),
-                SizedBox(
-                  width: 5.w,
+                  'المجال',
+                  style: TextStyle(
+                    fontSize: 22.sp,
+                    fontFamily: 'Arial',
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff003298),
+                  ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            Text(
+              HomeController.to.levelname,
+              style: TextStyle(
+                  fontSize: 20.sp,
+                  fontFamily: 'Arial',
+                  fontWeight: FontWeight.w400),
+            ),
+            SizedBox(
+              height: 8.h,
+            ),
+            Divider(
+              color: Colors.black,
             ),
             SizedBox(
               height: 15.h,
@@ -128,150 +212,73 @@ class _vadeo_screenState extends State<vadeo_screen> {
               width: 328.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-               ),
-               child: PodVideoPlayer(
-
-                frameAspectRatio:328/150,
-                alwaysShowProgressBar: true,
-                  videoThumbnail:DecorationImage(
-                    image: NetworkImage(HomeController.to.object.image,
+              ),
+              child: PodVideoPlayer(
+                  frameAspectRatio: 328 / 150,
+                  alwaysShowProgressBar: true,
+                  videoThumbnail: DecorationImage(
+                    image: NetworkImage(
+                      HomeController.to.object.image,
                     ),
                     fit: BoxFit.cover,
                   ),
                   controller: controller),
             ),
             SizedBox(
-              height: 8.h,
+              height: 14.h,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(
-                  ':',
-                  style: TextStyle(
-                    fontSize: 22.sp,
-                    fontFamily: 'Arial',
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff003298),
+                Expanded(
+                    child: RadioListTile<okORno>(
+                  groupValue: no,
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black)),
+                  value: okORno.OK,
+                  title: Text(
+                    'أنجز',
+                    style: TextStyle(
+                      fontSize: 22.sp,
+                      fontFamily: 'Arial',
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xff003298),
+                    ),
                   ),
-                ),
+                  onChanged: (okORno? values) async{
+                    await HomeApiController().WatchVideo(uid: SharedPreferencesApp().GetIdUser, vid: HomeController.to.object.id.toString());
+                    log('->${values}');
+                    setState(() {
+                      no = values!;
+                    });
+                  },
+                )),
                 SizedBox(
-                  width: 3.w,
+                  width: 2,
                 ),
-                Text(
-                  'الهدف',
-                  style: TextStyle(
-                    fontSize: 22.sp,
-                    fontFamily: 'Arial',
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff003298),
+                Expanded(
+                    child: RadioListTile<okORno>(
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black)),
+                  groupValue: no,
+                  value: okORno.NO,
+                  title: Text(
+                    'لم ينجز',
+                    style: TextStyle(
+                      fontSize: 22.sp,
+                      fontFamily: 'Arial',
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xff003298),
+                    ),
                   ),
-                ),
+                  onChanged: (okORno? values) {
+                    log('->${values}');
+                    setState(() {
+                      no = values!;
+                    });
+                  },
+                )),
               ],
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            Text(
-              HomeController.to.object.target,
-              style: TextStyle(
-                fontSize: 20.sp,
-                fontFamily: 'Arial',
-                fontWeight: FontWeight.w400
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            Divider(
-              color: Colors.black,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  ':',
-                  style: TextStyle(
-                    fontSize: 22.sp,
-                    fontFamily: 'Arial',
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff003298),
-                  ),
-                ),
-                SizedBox(
-                  width: 3.w,
-                ),
-                Text(
-                  'النتيجة',
-                  style: TextStyle(
-                    fontSize: 22.sp,
-                    fontFamily: 'Arial',
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff003298),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            Text(
-              HomeController.to.object.result,
-              style: TextStyle(
-                  fontSize: 20.sp,
-                  fontFamily: 'Arial',
-                  fontWeight: FontWeight.w400
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            Divider(
-              color: Colors.black,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  ':',
-                  style: TextStyle(
-                    fontSize: 22.sp,
-                    fontFamily: 'Arial',
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff003298),
-                  ),
-                ),
-                SizedBox(
-                  width: 3.w,
-                ),
-                Text(
-                  'الجواب',
-                  style: TextStyle(
-                    fontSize: 22.sp,
-                    fontFamily: 'Arial',
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xff003298),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 16.h,
-            ),
-            Text(
-              HomeController.to.object.answer,
-              style: TextStyle(
-                  fontSize: 20.sp,
-                  fontFamily: 'Arial',
-                  fontWeight: FontWeight.w400
-              ),
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            Divider(
-              color: Colors.black,
-            ),
+            )
           ],
         ),
       ),
