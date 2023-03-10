@@ -69,6 +69,7 @@ class Categories {
   int? id;
   int? levelId;
   String? name;
+  String? letter;
   List<Videos>? videos;
 
   Categories({this.id, this.levelId, this.name, this.videos});
@@ -77,6 +78,7 @@ class Categories {
     id = json['id'];
     levelId = json['level_id'];
     name = json['name'];
+    letter = json['letter'];
     if (json['videos'] != null) {
       videos = <Videos>[];
       json['videos'].forEach((v) {
@@ -89,6 +91,7 @@ class Categories {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['level_id'] = this.levelId;
+    data['letter'] = this.letter;
     data['name'] = this.name;
     if (this.videos != null) {
       data['videos'] = this.videos!.map((v) => v.toJson()).toList();

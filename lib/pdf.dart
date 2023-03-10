@@ -1,7 +1,9 @@
 import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
- import 'package:abllseducation/model/rebort.dart';
+ import 'package:abllseducation/Controller/AuthController/userController.dart';
+import 'package:abllseducation/Controller/SharedPreferences/SharedPreferences.dart';
+import 'package:abllseducation/model/rebort.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:open_file/open_file.dart';
@@ -22,7 +24,7 @@ class createPdf {
     Document dec = Document();
     for(int i = 0 ; i < data.length ; i ++){
       dec.addPage(_createPage(cat: data[i].categories,name: data[i].name!,title: i == 0 ?Text('The Assessment of Basic Language and Learning Skills-Revised\nSkill Tracking System'
-          '\nStudent Name: Ali Omr',
+          '\nStudent Name: ${userController.to.name}',
           style: TextStyle(
             fontSize: 15.sp,
           ),
@@ -63,9 +65,10 @@ class createPdf {
                         width: 57,
                         child: Center(
                             child: Text(
-                              cat[r].name!,
+                              cat[r].letter!,
                               style: TextStyle(
                                 fontSize: 15,
+                                font: arfont,
                                 fontWeight: FontWeight.bold,
                               ),
                             )),
@@ -87,7 +90,7 @@ class createPdf {
                               ]),
                           child: Center(
                             child: Text(
-                              cat[r].name + ' - ${j+1}',
+                              cat[r].letter + ' - ${j+1}',
                               style: TextStyle(
                                 fontSize: 16,
                               ),

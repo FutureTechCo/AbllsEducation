@@ -148,8 +148,7 @@ class home extends StatelessWidget {
                                                        var Oject = HomeController.to.DataResult[i].categories[j].videos[k];
                                                        HomeController.to.SetVideos(Oject);
                                                        HomeController.to.SetTapTitle(HomeController.to.DataResult[i].categories[j].letter);
-                                                       HomeController.to.Setlevelname(HomeController.to.DataResult[i].name);
-                                                       log('messageVideos $Oject');
+                                                        log('messageVideos $Oject');
                                                        Navigator.pushNamed(
                                                            context, routapp.vadeo_screen);
                                                      },
@@ -157,7 +156,7 @@ class home extends StatelessWidget {
                                                        height: 44,
                                                        width: 57,
                                                        decoration: BoxDecoration(
-                                                           color: Colors.white,
+                                                           color: HomeController.to.DataResult[i].categories![j].videos[k].is_watched? Color(0xff00FF00):Colors.white,
                                                            boxShadow: [
                                                              BoxShadow(
                                                                color: Color(0xff7899DC),

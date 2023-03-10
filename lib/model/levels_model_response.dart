@@ -70,31 +70,37 @@ class Categories {
 }
 
   class Videos {
-  late String title;
+  late String mission_number;
   late int id;
   late String url;
-  late String image;
+  late String mission_name;
+  late bool is_watched;
+  late String touchstone;
 
   Videos();
 
   @override
   String toString() {
-    return 'Videos{title: $title, id: $id, url: $url, image: $image';
+    return 'Videos{title: $mission_number, id: $id, url: $url, image: $mission_name, touchstone: $touchstone';
   }
 
   Videos.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
+    mission_number = json['mission_number'];
     id = json['id'];
     url = json['url'];
-    image = json['image'];
+    is_watched = json['is_watched'].runtimeType == List ? false:json['is_watched'];
+    mission_name = json['mission_name'];
+    touchstone = json['touchstone'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
+    data['mission_number'] = this.mission_number;
     data['id'] = this.id;
+    data['is_watched'] = this.is_watched;
     data['url'] = this.url;
-    data['image'] = this.image;
+    data['mission_name'] = this.mission_name;
+    data['touchstone'] = this.touchstone;
      return data;
   }
 }

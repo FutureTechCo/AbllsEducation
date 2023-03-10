@@ -93,7 +93,7 @@ class _FindeLevelState extends State<FindeLevel> {
                       ]),
                       child: Center(
                           child: Text(
-                            controller.DataResultCategories[i].name,
+                            controller.DataResultCategories[i].letter,
                             style: TextStyle(
                               fontSize: 25,
                               color: Colors.white,
@@ -127,8 +127,7 @@ class _FindeLevelState extends State<FindeLevel> {
                             ]),
                             child: Center(
                               child: Text(
-                                controller.DataResultCategories[i].name +
-                                    ' - ${j + 1} ' ,
+                                controller.DataResultCategories[i].videos[j].mission_number,
                                 style: TextStyle(
                                   color: Color(0xffA6A6A6),
                                   fontSize: 16,

@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:abllseducation/Controller/HomeController/HomeController.dart';
+import 'package:abllseducation/Controller/SharedPreferences/SharedPreferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
@@ -22,13 +26,12 @@ class block_reselt extends StatelessWidget {
     return GetBuilder<get_rebort>(
         id: 'GetLevels',
         builder: (controller){
-          print('@@@@@@@@@@@');
-          controller.level= Level();
+           controller.level= Level();
           return Scaffold(
             key: controller.key,
             body: FutureBuilder<void>(
                 future: controller.getLevel(
-                    cus_id: cus_id, level_id: level_id),
+                    cus_id: SharedPreferencesApp().GetIdUser, level_id: level_id),
 
                 builder: (context, snapshot) {
         //          print("kjhkjh${controller.level.name}");
@@ -87,9 +90,9 @@ class block_reselt extends StatelessWidget {
                                           Expanded(
                                             child: InkWell(
                                               onTap: () {
-                                                var Oject = controller.level!
+                                                Videos Oject =controller.level!
                                                     .categories![j].videos![k];
-                                                controller!.SetVideos(Oject);
+                                                controller.SetVideos(Oject);
                                                 controller.SetTapTitle(
                                                     controller.level
                                                         .categories![j].name);
@@ -113,7 +116,7 @@ class block_reselt extends StatelessWidget {
                                                     controller
                                                             .level
                                                             .categories![j]
-                                                            .name! +
+                                                            .letter! +
                                                         ' - ${k + 1}',
                                                     style: TextStyle(
                                                       color: Color(0xffA6A6A6),
@@ -137,7 +140,7 @@ class block_reselt extends StatelessWidget {
                                               ]),
                                           child: Center(
                                               child: Text(
-                                            controller.level!.categories![j].name!,
+                                            controller.level!.categories![j].letter!,
                                             style: TextStyle(
                                               fontSize: 25,
                                               color: Colors.white,

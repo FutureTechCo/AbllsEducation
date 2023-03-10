@@ -64,8 +64,7 @@ class get_rebort extends myGet.GetxController{
     update();
   }
   void SetVideos(value){
-
-    object = value;
+     object = value;
 
     update(['GetLevels']);
  }

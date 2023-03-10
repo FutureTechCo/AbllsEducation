@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:abllseducation/Controller/HomeController/HomeController.dart';
+import 'package:abllseducation/Controller/SharedPreferences/SharedPreferences.dart';
 import 'package:abllseducation/api/SettingApi.dart';
 import 'package:abllseducation/model/levels_model_response.dart';
 import 'package:http/http.dart' as http;
@@ -12,7 +14,7 @@ class HomeApiController {
   }
   Future<List<levels_model_response>> getAllLevels() async {
     List<levels_model_response> DataResult;
-    var url = Uri.parse(SettingApiUri.Levels);
+    var url = Uri.parse(SettingApiUri.Levels+SharedPreferencesApp().GetIdUser);
     var response = await http.get(url);
     if (response.statusCode == 200) {
       print('ppppppp');

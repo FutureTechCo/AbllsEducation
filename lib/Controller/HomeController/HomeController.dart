@@ -12,9 +12,8 @@ class HomeController extends myGet.GetxController{
    List<levels_model_response> DataResult = [];
    List<Categories> DataResultCategories = [];
    Videos object = Videos();
-   String tapTitle = '';
-   String levelname = '';
-   @override
+  String tapTitle = '';
+  @override
    void onInit()async{
      // await getDataCategories(Search: search.text);
      super.onInit();
@@ -34,15 +33,18 @@ class HomeController extends myGet.GetxController{
        update();
    }
    Future<void> getDataCategories({required String search})async{
+     DataResultCategories = [];
      var listRsult = <Categories>[];
      List<Categories> list = await HomeApiController().getAllCategories();
 
      list.forEach((element) {
-       if(element.name.toLowerCase() == search.toLowerCase() && !listRsult.contains(element)){
+       if(element.name.toLowerCase() == search.toLowerCase() || !listRsult.contains(element)){
          listRsult.add(element);
+        }else{
+         DataResultCategories=[];
        }
      });
-     DataResultCategories = listRsult;
+     DataResultCategories.addAll(listRsult);
      log(listRsult.length.toString());
      update();
     }
@@ -54,9 +56,6 @@ class HomeController extends myGet.GetxController{
      update();
    }   void SetTapTitle(value){
      tapTitle = value;
-     update();
-   } void Setlevelname(value){
-    levelname = value;
      update();
    }
 

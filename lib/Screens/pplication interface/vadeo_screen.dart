@@ -18,15 +18,16 @@ class vadeo_screen extends StatefulWidget {
 
 class _vadeo_screenState extends State<vadeo_screen> {
   late final PodPlayerController controller;
+  okORno no = okORno.NO;
 
   @override
   void initState() {
+    no = HomeController.to.object.is_watched? okORno.OK:okORno.NO;
     controller = PodPlayerController(
       playVideoFrom: PlayVideoFrom.youtube(
         HomeController.to.object.url,
       ),
     )..initialise();
-    log('message => ${controller.currentVideoPosition}');
     super.initState();
   }
 
@@ -41,7 +42,6 @@ class _vadeo_screenState extends State<vadeo_screen> {
     // TODO: implement deactivate
     super.deactivate();
   }
-  okORno no = okORno.NO;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +94,7 @@ class _vadeo_screenState extends State<vadeo_screen> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  ' : عنوان الفيديو',
+                  ' : رقم المهمة',
                   style: TextStyle(
                     fontSize: 22.sp,
                     fontFamily: 'Arial',
@@ -106,7 +106,7 @@ class _vadeo_screenState extends State<vadeo_screen> {
                   width: 5.w,
                 ),
                 Text(
-                  HomeController.to.object.title,
+                  HomeController.to.object.mission_number,
                   style: TextStyle(
                       fontSize: 20.sp,
                       fontFamily: 'Arial',
@@ -150,7 +150,8 @@ class _vadeo_screenState extends State<vadeo_screen> {
               height: 16.h,
             ),
             Text(
-              HomeController.to.tapTitle,
+              HomeController.to.object.mission_name
+              /*HomeController.to.tapTitle*/,
               style: TextStyle(
                   fontSize: 20.sp,
                   fontFamily: 'Arial',
@@ -178,7 +179,7 @@ class _vadeo_screenState extends State<vadeo_screen> {
                   width: 3.w,
                 ),
                 Text(
-                  'المجال',
+                  'المحك',
                   style: TextStyle(
                     fontSize: 22.sp,
                     fontFamily: 'Arial',
@@ -192,11 +193,13 @@ class _vadeo_screenState extends State<vadeo_screen> {
               height: 16.h,
             ),
             Text(
-              HomeController.to.levelname,
+              HomeController.to.object.touchstone
+              /*HomeController.to.levelname*/,
               style: TextStyle(
                   fontSize: 20.sp,
                   fontFamily: 'Arial',
                   fontWeight: FontWeight.w400),
+              textAlign: TextAlign.end,
             ),
             SizedBox(
               height: 8.h,
@@ -216,12 +219,6 @@ class _vadeo_screenState extends State<vadeo_screen> {
               child: PodVideoPlayer(
                   frameAspectRatio: 328 / 150,
                   alwaysShowProgressBar: true,
-                  videoThumbnail: DecorationImage(
-                    image: NetworkImage(
-                      HomeController.to.object.image,
-                    ),
-                    fit: BoxFit.cover,
-                  ),
                   controller: controller),
             ),
             SizedBox(
@@ -270,7 +267,8 @@ class _vadeo_screenState extends State<vadeo_screen> {
                       color: Color(0xff003298),
                     ),
                   ),
-                  onChanged: (okORno? values) {
+                  onChanged: (okORno? values) async {
+                    await HomeApiController().WatchVideo(uid: SharedPreferencesApp().GetIdUser, vid: HomeController.to.object.id.toString());
                     log('->${values}');
                     setState(() {
                       no = values!;
