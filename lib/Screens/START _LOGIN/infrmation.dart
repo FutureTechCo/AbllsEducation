@@ -23,7 +23,7 @@ class InformationScreen extends StatefulWidget {
   State<InformationScreen> createState() => _InformationScreenState();
 }
 
-class _InformationScreenState extends State<InformationScreen> {
+class _InformationScreenState extends State<InformationScreen> with Helper {
   XFile? _image;
   bool indecator = false;
 
@@ -170,13 +170,38 @@ class _InformationScreenState extends State<InformationScreen> {
                           setState(() {
                             indecator = true;
                           });
-                          bool x = await userController()
-                              .add_user(user: userController().new_user());
-                           setState(() {
-                            indecator = false;
-                          });
-                          if (x == true) {
-                            Navigator.pushReplacementNamed(context, '/home');
+                          if (InfoGetController.to.name.text.isNotEmpty &&
+                              InfoGetController.to.phone.text.isNotEmpty &&
+                              InfoGetController.to.country.text.isNotEmpty) {
+                            if (!InfoGetController.to.spe &&
+                                !InfoGetController.to.ilp) {
+                              ShowSnackBar(
+                                  context: context,
+                                  Message:
+                                      'عليك تحديد هل انت اخصائي ام ولي امر',
+                                  Error: false);
+                              setState(() {
+                                indecator = false;
+                              });
+                            } else {
+                              await userController()
+                                  .add_user(user: userController().new_user())
+                                  .then((value) {
+                                Navigator.pushReplacementNamed(
+                                    context, '/home');
+                              });
+                              setState(() {
+                                indecator = false;
+                              });
+                            }
+                          } else {
+                            ShowSnackBar(
+                                context: context,
+                                Message: 'احدى الحقول فارغة',
+                                Error: false);
+                            setState(() {
+                              indecator = false;
+                            });
                           }
                         },
                         child: Text(

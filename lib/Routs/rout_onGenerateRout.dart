@@ -52,7 +52,7 @@ class AppRouts {
   static Route? OnGenerateRout(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case routapp.initialRoute:
-       return MaterialPageRoute(builder: (context) => SplashScreen());
+       return MaterialPageRoute(builder: (context) => InformationScreen());
       case routapp.pageViewRoutScreen:
         return MaterialPageRoute(
           builder: (context) => const PageViewScreen(),
