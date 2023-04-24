@@ -83,7 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       controller: LoginGetx().to.SPasswordConfirmController,
                       inputType: LoginGetx().to.text_input,
                       color: Color(0xff336BA4),
-                      hintText: 'كلمة المرور',
+                      hintText: ' تأكيد كلمة المرور',
                       icon_data: Icons.lock)),
 
               SizedBox(
@@ -95,8 +95,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     setState(() {
                       xx =false;
                     });
-                    // await  FirebaseAuth.instance.createUserWithEmailAndPassword(email: 'hamza@gmail.com', password: 'password');
-                    await LoginGetx()
+                     await LoginGetx()
                         .to
                         .SignInWithPasswordAndEmail(context);
                     setState(() {

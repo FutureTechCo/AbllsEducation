@@ -25,7 +25,7 @@ import 'InfoGetController.dart';
 
 class LoginGetx extends GetxController with Helper {
   LoginGetx get to => Get.find();
-  late String pthe='';
+  late String pthe = '';
   final TextInputType text_input = TextInputType.text;
   final TextInputType email_input = TextInputType.emailAddress;
   final TextInputType Password_input = TextInputType.visiblePassword;
@@ -35,24 +35,28 @@ class LoginGetx extends GetxController with Helper {
   final TextEditingController PasswordController = TextEditingController();
   bool State = false;
   XFile? file;
+
   void Set_State(bool b) {
     State = b;
     update();
   }
-  firebaseUser fireebadee =firebaseUser();
+
+  firebaseUser fireebadee = firebaseUser();
+
   /*End Var LoginScreen*/
 
   /*Start Var SignUpScreen*/
   final TextEditingController SEmailController = TextEditingController();
   final TextEditingController SPasswordController = TextEditingController();
   final TextEditingController SPasswordConfirmController =
-  TextEditingController();
+      TextEditingController();
   bool $State = false;
 
   void Set$State(bool b) {
     $State = b;
     update();
   }
+
 //@override
 //  void onInit() async{
 //    // TODO: implement onInit
@@ -81,95 +85,103 @@ class LoginGetx extends GetxController with Helper {
   final TextEditingController UEmailController = TextEditingController();
   final TextEditingController UPasswordController = TextEditingController();
   final TextEditingController AddCommit = TextEditingController();
-  /*aDD cOMMIT*/
-  user Userem=user();
 
-  late  TextEditingController PNameController= TextEditingController();
-  TextEditingController PCityController =  TextEditingController();
+  /*aDD cOMMIT*/
+  user Userem = user();
+
+  late TextEditingController PNameController = TextEditingController();
+  TextEditingController PCityController = TextEditingController();
   TextEditingController PContrController = TextEditingController();
   TextEditingController PPhoneController = TextEditingController();
 
   String Id_user = '';
+
   void SetI(String id) {
     Id_user = id;
     update();
   }
+
   String email = '';
+
   void SetEmail(String e) {
     email = e;
     update();
   }
+
   String UrlImageUsers = '';
-  void SetUrlImage(String n){
+
+  void SetUrlImage(String n) {
     UrlImageUsers = n;
     update();
   }
+
   String file_Path = '';
-  void setfiles(String filespath){
+
+  void setfiles(String filespath) {
     file_Path = filespath;
     update();
   }
+
   late String name;
   late String city;
   late String contre;
   late int number;
-  profile(){
-    PNameController  =  TextEditingController(text: name );
-    PCityController =  TextEditingController(text: city);
+
+  profile() {
+    PNameController = TextEditingController(text: name);
+    PCityController = TextEditingController(text: city);
     PContrController = TextEditingController(text: contre);
     PPhoneController = TextEditingController(text: number.toString());
   }
-  Future<String> getUser ( String Id)async{
 
+  Future<String> getUser(String Id) async {
     Map<String, dynamic> data = await firebaseUser().getOneUser(Id);
     // Userem.fromMap(data);
 
-    name=data['Name'].toString();
-    city=data['city'].toString();
-    contre=data['contre'].toString();
+    name = data['Name'].toString();
+    city = data['city'].toString();
+    contre = data['contre'].toString();
     print('****************');
     //int.parse(data['number'])
-    number=11;
+    number = 11;
     print('****************');
 
-
-    Userem=user();
+    Userem = user();
     SetUrlImage(data['User_Image'].toString());
     print('-***********--------------');
     return Userem.path;
-
   }
-  getUseur ( String Id)async{
 
+  getUseur(String Id) async {
     Map<String, dynamic> data = await firebaseUser().getOneUser(Id);
     // Userem.fromMap(data);
 
-    name=data['Name'].toString();
-    city=data['city'].toString();
-    contre=data['contre'].toString();
+    name = data['Name'].toString();
+    city = data['city'].toString();
+    contre = data['contre'].toString();
     print('****************');
     //int.parse(data['number'])
-    number=11;
+    number = 11;
     print('****************');
-    Userem=user();
+    Userem = user();
     SetUrlImage(data['User_Image'].toString());
-    pthe= data['Path'];
-
-
+    pthe = data['Path'];
   }
+
   /*SignInFunsction*/
   Future<void> SignInWithPasswordAndEmail(context) async {
-    CheckPasswordAndEmail().Check(SPasswordController.text,
-        SPasswordConfirmController.text, SEmailController.text, context);
-    await FirebaseAuhController()
+    if (CheckPasswordAndEmail().Check(SPasswordController.text,
+        SPasswordConfirmController.text, SEmailController.text, context)) {
+      await FirebaseAuhController()
           .CreateAccount(
-        context: context,
-        eamil: SEmailController.value.text,
-        password: SPasswordController.value.text)
-        .then((value) {
-          Navigator.pushReplacementNamed(context, '/InformationScreen');
-      log('Id_user => ' + Id_user);
-    });
+              context: context,
+              eamil: SEmailController.value.text,
+              password: SPasswordController.value.text)
+          .then((value) {
+        Navigator.pushReplacementNamed(context, '/InformationScreen');
+        log('Id_user => ' + Id_user);
+      });
+    }
   }
 
   bool CheckPassword(context) {
@@ -186,15 +198,15 @@ class LoginGetx extends GetxController with Helper {
 
   Future<bool> performLogin({required BuildContext context}) async {
     if (checkData(context: context)) {
-      bool x=  await login(context: context);
+      bool x = await login(context: context);
       return x;
     }
     return false;
   }
 
   bool checkData({required BuildContext context}) {
-    if (InfoGetController.to.email_Login.text.isNotEmpty
-        &&InfoGetController.to.password_Login.text.isNotEmpty) {
+    if (InfoGetController.to.email_Login.text.isNotEmpty &&
+        InfoGetController.to.password_Login.text.isNotEmpty) {
       return true;
     }
     ShowSnackBar(
@@ -224,6 +236,7 @@ class LoginGetx extends GetxController with Helper {
       return false;
     }
   }
+
   Future<void> performCreateAccount({required BuildContext context}) async {
     if (checkDataCreateAccount(context: context)) {
       await CreateAccount(context: context);
@@ -256,9 +269,6 @@ class LoginGetx extends GetxController with Helper {
     SPasswordConfirmController.text = '';
   }
 
-
-
-
   Future<void> logout(context) async {
     await FirebaseAuhController().SignOut();
     await SharedPreferencesApp().clearData();
@@ -269,6 +279,5 @@ class LoginGetx extends GetxController with Helper {
     city = '';
     contre = '';
     Navigator.pushReplacementNamed(context, routapp.SignInScreen);
-
   }
 }

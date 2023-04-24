@@ -16,7 +16,7 @@ class SharedPreferencesApp{
     await _sharedPreferences.setBool('login', true);
     await _sharedPreferences.setString('IDu', Idu);
   }
-  String get GetIdUser => _sharedPreferences.getString('IDu') ?? '';
+  String get GetIdUser => _sharedPreferences.getString('IDu') ?? '1';
   bool    get  GetLlgin  => _sharedPreferences.getBool('login') ?? false;
 
   Future<void> SaveNameUser({required String NameUser})async{

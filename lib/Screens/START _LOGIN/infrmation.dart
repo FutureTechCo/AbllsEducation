@@ -1,3 +1,4 @@
+import 'package:abllseducation/Controller/Api_Controller/data_user_Api.dart';
 import 'package:flutter/material.dart';
 
 import 'dart:io';
@@ -24,49 +25,52 @@ class InformationScreen extends StatefulWidget {
 
 class _InformationScreenState extends State<InformationScreen> {
   XFile? _image;
- bool indecator = false;
-  Future getImage()async{
-     _image = await ImagePicker().pickImage(source: ImageSource.gallery,imageQuality: 50 );
-    if(_image==null)return;
-    final imageTemporary=File(_image!.path);
+  bool indecator = false;
+
+  Future getImage() async {
+    _image = await ImagePicker()
+        .pickImage(source: ImageSource.gallery, imageQuality: 50);
+    if (_image == null) return;
+    final imageTemporary = File(_image!.path);
     setState(() {
-     // this._image=imageTemporary;
-      InfoGetController.to.image=_image!;
+      // this._image=imageTemporary;
+      InfoGetController.to.image = _image!;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-
         ),
-        body:  SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 32.h),
             child: Column(
               children: [
-                InkWell (
-                  onTap: ()async{await getImage();},
-                  child:_image == null? Image.asset('assets/add.png'):
-                  Container(
-                    height: 104.h,
-                    width: 100.w,
-                    clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                        shape: BoxShape.circle
-                    ),
-                    child: Image.file(  File(_image!.path),
-
-
-                      fit: BoxFit.cover,
-                      errorBuilder: ((context, error, stackTrace) {
-                        return SvgPicture.asset('assets/icons/add.svg');
-                      }),
-                    ),
-                  ),),
+                InkWell(
+                  onTap: () async {
+                    await getImage();
+                  },
+                  child: _image == null
+                      ? Image.asset('assets/add.png')
+                      : Container(
+                          height: 104.h,
+                          width: 100.w,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                              color: Colors.green, shape: BoxShape.circle),
+                          child: Image.file(
+                            File(_image!.path),
+                            fit: BoxFit.cover,
+                            errorBuilder: ((context, error, stackTrace) {
+                              return SvgPicture.asset('assets/icons/add.svg');
+                            }),
+                          ),
+                        ),
+                ),
                 SizedBox(
                   height: 16.h,
                 ),
@@ -80,8 +84,6 @@ class _InformationScreenState extends State<InformationScreen> {
                       hintText: 'الأسم الكامل',
                       icon_data: Icons.person_outline),
                 ),
-
-
                 SizedBox(
                   height: 16.h,
                 ),
@@ -116,42 +118,44 @@ class _InformationScreenState extends State<InformationScreen> {
                     children: [
                       Row(
                         children: [
-                          Checkbox(value: InfoGetController.to.ilp, onChanged: (bool? val) {
-                             setState(() {
-                               InfoGetController.to.SetilpVal(val!);
-
-                             });
-
-                          },side: BorderSide(
-                              color: Colors.blue,
-                              width: 2.w
-                          ),),
-                          Text('أخصائي',style: TextStyle(
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Arial',
-                              color: Colors.blue
-                          ),),
+                          Checkbox(
+                            value: InfoGetController.to.ilp,
+                            onChanged: (bool? val) {
+                              setState(() {
+                                InfoGetController.to.SetilpVal(val!);
+                              });
+                            },
+                            side: BorderSide(color: Colors.blue, width: 2.w),
+                          ),
+                          Text(
+                            'أخصائي',
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Arial',
+                                color: Colors.blue),
+                          ),
                         ],
                       ),
                       Row(
                         children: [
-                          Checkbox(value: InfoGetController.to.spe,
+                          Checkbox(
+                            value: InfoGetController.to.spe,
                             onChanged: (bool? val) {
-                                    setState(() {
-                                      InfoGetController.to.SetspeVal(val!);
-
-                                    });
-                          },side: BorderSide(
-                              color: Colors.blue,                            width: 2.w
-
-                          ),),
-                          Text('ولي الأمر',style: TextStyle(
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Arial',
-                              color: Colors.blue
-                          ),),
+                              setState(() {
+                                InfoGetController.to.SetspeVal(val!);
+                              });
+                            },
+                            side: BorderSide(color: Colors.blue, width: 2.w),
+                          ),
+                          Text(
+                            'ولي الأمر',
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Arial',
+                                color: Colors.blue),
+                          ),
                         ],
                       ),
                     ],
@@ -160,40 +164,42 @@ class _InformationScreenState extends State<InformationScreen> {
                 SizedBox(
                   height: 85.h,
                 ),
-             indecator== false?   ElevatedButton(
-                  onPressed: () async {
-
-                    setState(() {
-                      indecator =true;
-                    });
-
-
-        bool x=   await userController().add_user(user: userController().new_user());
-                    setState(() {
-                      indecator =false;
-                    });
-                    if(x==true){Navigator.pushReplacementNamed(context, '/home'); }
-                  },
-                  child: Text(
-                    'تأكيد',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Arial',
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: Size(173.w, 55.h),
-                      primary: Color(0xff336BA4),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(90.r))),
-                ) :CircularProgressIndicator(color: Color(0xff336BA4),),
+                indecator == false
+                    ? ElevatedButton(
+                        onPressed: () async {
+                          setState(() {
+                            indecator = true;
+                          });
+                          bool x = await userController()
+                              .add_user(user: userController().new_user());
+                           setState(() {
+                            indecator = false;
+                          });
+                          if (x == true) {
+                            Navigator.pushReplacementNamed(context, '/home');
+                          }
+                        },
+                        child: Text(
+                          'تأكيد',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Arial',
+                            fontSize: 22.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            minimumSize: Size(173.w, 55.h),
+                            primary: Color(0xff336BA4),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(90.r))),
+                      )
+                    : CircularProgressIndicator(
+                        color: Color(0xff336BA4),
+                      ),
               ],
             ),
           ),
-        )
-
-    );
+        ));
   }
 }

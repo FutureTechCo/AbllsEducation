@@ -71,7 +71,7 @@ class _vadeo_screenState extends State<vadeo_screen> {
               ),
               IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context,['true']);
                   },
                   icon: Icon(Icons.arrow_forward, color: Color(0xff003298))),
               SizedBox(
@@ -242,8 +242,9 @@ class _vadeo_screenState extends State<vadeo_screen> {
                     ),
                   ),
                   onChanged: (okORno? values) async{
-                    await HomeApiController().WatchVideo(uid: SharedPreferencesApp().GetIdUser, vid: HomeController.to.object.id.toString());
+                    await HomeApiController().WatchVideo(context: context,uid: SharedPreferencesApp().GetIdUser, vid: HomeController.to.object.id.toString());
                     log('->${values}');
+                    log('s->${SharedPreferencesApp().GetIdUser}');
                     setState(() {
                       no = values!;
                     });
@@ -268,8 +269,9 @@ class _vadeo_screenState extends State<vadeo_screen> {
                     ),
                   ),
                   onChanged: (okORno? values) async {
-                    await HomeApiController().WatchVideo(uid: SharedPreferencesApp().GetIdUser, vid: HomeController.to.object.id.toString());
+                    await HomeApiController().WatchVideo(context: context,uid: SharedPreferencesApp().GetIdUser, vid: HomeController.to.object.id.toString());
                     log('->${values}');
+                    log('s->${SharedPreferencesApp().GetIdUser}');
                     setState(() {
                       no = values!;
                     });

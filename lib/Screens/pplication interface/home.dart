@@ -6,10 +6,16 @@ import 'package:abllseducation/model/levels_model_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../Controller/SharedPreferences/SharedPreferences.dart';
 import '../Wdjet/CstomAppar.dart';
 import '../Menu/DrawerApp.dart';
-class home extends StatelessWidget {
+class home extends StatefulWidget {
 
+  @override
+  State<home> createState() => _homeState();
+}
+
+class _homeState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +41,7 @@ class home extends StatelessWidget {
                              ),
                              InkWell(
                                onTap: () {
+                                 log('message=>${SharedPreferencesApp().GetIdUser}');
                                  HomeController.to.pageController.previousPage(
                                      duration: Duration(seconds: 1), curve: Curves.ease);
                                },
@@ -144,13 +151,17 @@ class home extends StatelessWidget {
                                                for (int k = 0; k <HomeController.to.DataResult[i].categories[j].videos.length; k++)
                                                  Expanded(
                                                    child: InkWell(
-                                                     onTap: () {
+                                                     onTap: () async {
                                                        var Oject = HomeController.to.DataResult[i].categories[j].videos[k];
                                                        HomeController.to.SetVideos(Oject);
                                                        HomeController.to.SetTapTitle(HomeController.to.DataResult[i].categories[j].letter);
                                                         log('messageVideos $Oject');
-                                                       Navigator.pushNamed(
+                                                     dynamic r =  await Navigator.pushNamed(
                                                            context, routapp.vadeo_screen);
+                                                      if(r[0] == 'true'){
+                                                        setState(() {
+                                                        });
+                                                      }
                                                      },
                                                      child: Container(
                                                        height: 44,

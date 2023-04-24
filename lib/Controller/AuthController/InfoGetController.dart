@@ -10,7 +10,7 @@ class InfoGetController extends GetxController{
     TextEditingController password = TextEditingController();
     TextEditingController country = TextEditingController();
     TextEditingController email = TextEditingController();
-   late XFile image;
+    XFile? image;
     //Option
 
     bool ilp = false;

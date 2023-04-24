@@ -16,7 +16,7 @@ class CheckPasswordAndEmail with Helper {
       ShowSnackBar(context: context, Error: true, Message: 'تم التسجيل بنجاح');
       return true;
     } else if (!e.contains('@gmail.com') || !e.contains('@hotmail.com')) {
-      ShowSnackBar(context: context, Error: false, Message: 'الايميل غير رسمي');
+      ShowSnackBar(context: context, Error: false, Message: 'الايميل غير رسمي يجب ان يحتوي على (@hotmail.com|@gmail.com)');
       return false;
     } else {
       return false;
