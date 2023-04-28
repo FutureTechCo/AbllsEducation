@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(Duration(seconds: 3),() async{
       if(SharedPreferencesApp().GetLlgin){
         print("111111111");
-        userController.to.get_data_user(id: SharedPreferencesApp().GetIdUser);
+       await userController.to.get_data_user(id: SharedPreferencesApp().GetIdUser);
 
         Navigator.pushReplacementNamed(context, routapp.home);
 

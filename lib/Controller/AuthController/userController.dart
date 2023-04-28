@@ -40,8 +40,9 @@ class userController extends GetxController {
 
   Future<bool> add_user({required user_n user}) async {
     bool x = await user_controler().addUser(User: user);
+    print('${x}hallohalooo');
     if (x) {
-      get_data_user(id: SharedPreferencesApp().GetIdUser);
+     await get_data_user(id: SharedPreferencesApp().GetIdUser);
     }
     return x;
   }

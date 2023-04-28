@@ -15,6 +15,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../Controller/AuthController/GetxLogin.dart';
 import '../../Controller/AuthController/userController.dart';
+import '../../Controller/SharedPreferences/SharedPreferences.dart';
 
 class InformationScreen extends StatefulWidget {
   const InformationScreen({Key? key}) : super(key: key);
@@ -186,7 +187,9 @@ class _InformationScreenState extends State<InformationScreen> with Helper {
                             } else {
                               await userController()
                                   .add_user(user: userController().new_user())
-                                  .then((value) {
+                                  .then((value) async{
+                                await userController.to.get_data_user(id: SharedPreferencesApp().GetIdUser);
+
                                 Navigator.pushReplacementNamed(
                                     context, '/home');
                               });

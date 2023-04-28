@@ -46,13 +46,14 @@ import '../Screens/sub_screen/reselt.dart';
   static const String MonthlySubscription ='/MonthlySubscription';
   static const String block_reselt='/block_reselt';
   static const String results ='/results';
+  static const String  SplashScreen ='/SplashScreen';
 }
 
 class AppRouts {
   static Route? OnGenerateRout(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case routapp.initialRoute:
-       return MaterialPageRoute(builder: (context) => InformationScreen());
+       return MaterialPageRoute(builder: (context) => SplashScreen());
       case routapp.pageViewRoutScreen:
         return MaterialPageRoute(
           builder: (context) => const PageViewScreen(),
