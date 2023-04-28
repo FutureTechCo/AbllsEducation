@@ -42,7 +42,7 @@ class DrawerApp extends StatelessWidget {
                          clipBehavior: Clip.antiAlias,
                          decoration: BoxDecoration(
                              borderRadius: BorderRadius.circular(90.r)),
-                         child: userController.to.avatar != null
+                         child: userController.to.avatar != 'https://talaadmin.online/'
                              ? Image.network(
                            userController.to.avatar,
                            fit: BoxFit.cover,

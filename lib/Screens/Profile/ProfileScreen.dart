@@ -73,7 +73,7 @@ class ProfilesScreen extends StatelessWidget {
                     height: 20.h,
                   ),
                   userController.to.avatar=='https://talaadmin.online/'?
-                  Image.network('https://gogeticon.net/files/1925428/fa0cbc2764f70113bf2fad3905933545.png',width: 103.w,height: 103.h,)
+                  Image.asset('assets/download.png',width:103.w ,height: 103.h,)
                       :Image.network(userController.to.avatar,width: 103.w,height: 103.h,),
                   Text(
                     userController.to.name??'اهلان ايها الزائير',
