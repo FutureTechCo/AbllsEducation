@@ -1,5 +1,6 @@
 
-import 'HelperError.dart';
+ import 'package:abllseducation/Utils/HelperError.dart';
+
 class CheckPasswordAndEmail with Helper {
   bool Check(String password, String p, String e, context,) {
     if (password.length < 6) {

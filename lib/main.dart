@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:abllseducation/Controller/AuthController/InfoGetController.dart';
 import 'package:abllseducation/Controller/HomeController/ProfileController.dart';
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
@@ -28,7 +30,7 @@ void main() async{
   Get.put(get_rebort());
   await Get.put(HomeGetxVar());
   await SharedPreferencesApp().MethodeInitSharedPref();
-
+  log('id222 = ${SharedPreferencesApp().GetIdUser}');
   await Get.put(LoginGetx());
   runApp(const MyApp());
 }

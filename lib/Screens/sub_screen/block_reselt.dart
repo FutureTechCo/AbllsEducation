@@ -103,7 +103,7 @@ class block_reselt extends StatelessWidget {
                                                 height: 44,
                                                 width: 57,
                                                 decoration: BoxDecoration(
-                                                    color: controller.level!.categories![j].videos![k].isWatched! ? Color(0xff00FF00):Colors.white,
+                                                    color: controller.level!.categories![j].videos![k].is_watched! ? Color(0xff00FF00):Colors.white,
                                                     boxShadow: [
                                                       BoxShadow(
                                                         color:

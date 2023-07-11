@@ -43,7 +43,7 @@ class get_rebort extends myGet.GetxController{
 
         for(int j=0 ; j<DataResult[i].categories!.length ; j++){
           for(int x =0;x<DataResult[i].categories![j].videos!.length;x++){
-         if(DataResult[i].categories![j].videos![x].isWatched!){
+         if(DataResult[i].categories![j].videos![x].is_watched!){
            vieo_wathaed++;
          }
           }

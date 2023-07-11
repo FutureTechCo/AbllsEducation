@@ -101,38 +101,36 @@ class Categories {
 }
 
 class Videos {
-  int? id;
-  String? url;
-  String? title;
-  String? image;
-  String? target;
-  String? result;
-  String? answer;
-  bool? isWatched;
+  late String mission_number;
+  late int id;
+  late String url;
+  late String mission_name;
+  late bool is_watched;
+  late String touchstone;
   Videos();
 
 
-  Videos.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    url = json['url'];
-    title = json['title'];
-    image = json['image'];
-    target = json['target'];
-    result = json['result'];
-    answer = json['answer'];
-    isWatched = json['is_watched'];
+  @override
+  String toString() {
+    return 'Videos{mission_number: $mission_number, id: $id, url: $url, mission_name: $mission_name, is_watched: $is_watched, touchstone: $touchstone}';
   }
 
+  Videos.fromJson(Map<String, dynamic> json) {
+    mission_number = json['mission_number'];
+    id = json['id'];
+    url = json['url'];
+    is_watched = json['is_watched'].runtimeType == List ? false:json['is_watched'];
+    mission_name = json['mission_name'];
+    touchstone = json['touchstone'];
+  }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['mission_number'] = this.mission_number;
     data['id'] = this.id;
+    data['is_watched'] = this.is_watched;
     data['url'] = this.url;
-    data['title'] = this.title;
-    data['image'] = this.image;
-    data['target'] = this.target;
-    data['result'] = this.result;
-    data['answer'] = this.answer;
-    data['is_watched'] = this.isWatched;
+    data['mission_name'] = this.mission_name;
+    data['touchstone'] = this.touchstone;
     return data;
   }
 }

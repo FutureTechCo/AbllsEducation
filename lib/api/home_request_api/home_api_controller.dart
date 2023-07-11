@@ -15,13 +15,11 @@ class HomeApiController  with Helper{
     return _inst;
   }
   Future<List<levels_model_response>> getAllLevels() async {
-    log('message=>${SharedPreferencesApp().GetIdUser}');
-    List<levels_model_response> DataResult;
+     List<levels_model_response> DataResult;
     var url = Uri.parse(SettingApiUri.Levels+SharedPreferencesApp().GetIdUser);
     var response = await http.get(url);
     if (response.statusCode == 200) {
-      print('ppppppp');
-      DataResult = <levels_model_response>[];
+       DataResult = <levels_model_response>[];
       jsonDecode(response.body).forEach((e) {
         DataResult.add(levels_model_response.fromJson(e));
       });
@@ -52,9 +50,6 @@ class HomeApiController  with Helper{
       var response = await http.post(url,body: {
         'cus_id':uid,'video_id':vid
       });
-      log('Status Code Is => ${response.statusCode}');
-      log('Video Id Is => $vid');
-      log('User Id Is => $uid');
       if (response.statusCode == 200) {
         log('Done Watch Video');
         ShowSnackBar(context: context, Message: 'لم يتم المشاهدة', Error: true);

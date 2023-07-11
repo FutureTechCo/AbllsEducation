@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:abllseducation/Controller/get_rebort_controtter/get_rebort.dart';
 import 'package:abllseducation/model/rebort.dart';
 import 'package:abllseducation/pdf.dart';
+import 'package:abllseducation/test.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -68,6 +69,7 @@ class CstomAppBar_sup extends StatelessWidget {
                           Spacer(),
                           InkWell(
                             onTap: () async {
+                              // Navigator.push(context,MaterialPageRoute(builder: (context) => Test(list: list),));
                               await createPdf.createPDFfile(data: list!);
                             },
                             child: Container(

@@ -22,110 +22,139 @@ class createPdf {
     File newFile = File(path + "/my_pdf3.pdf");
 
     Document dec = Document();
-    for(int i = 0 ; i < data.length ; i ++){
-      dec.addPage(_createPage(cat: data[i].categories,name: data[i].name!,title: i == 0 ?Text('The Assessment of Basic Language and Learning Skills-Revised\nSkill Tracking System'
-          '\nStudent Name: ${userController.to.name}',
-          style: TextStyle(
-            fontSize: 15.sp,
-          ),
-          textAlign: TextAlign.center
-      ):null,index: i+1));
-    }
+       dec.addPage(_createPage(cat: data));
     Uint8List result = await dec.save();
     await newFile.writeAsBytes(result);
     await OpenFile.open(newFile.path);
   }
 
-  static Page _createPage({Text? title,index,name,cat}) {
+  static Page _createPage({cat}) {
     return Page(
       textDirection: TextDirection.rtl,
-      //ssss
-
       theme: ThemeData.withFont(base: arfont),
-      pageFormat: PdfPageFormat.a3,
+      pageFormat: PdfPageFormat.a4,
        build: (context) {
-        return  Padding(
-          padding: EdgeInsets.all(8.0.h),
-          child: SizedBox(
-            height: 573.99.h,
-            width: double.infinity.w,
-            child: Column(
-              children: [
-                SizedBox(width: double.infinity.w),
-                 title ?? SizedBox(),
-                SizedBox(
-                  height:  title!=null?15.h:0.h,
-                ),
-                for(int r = 0 ; r < cat.length;r++)
-                  if(cat[r].videos.isNotEmpty)
-                    Row(
-                    children: [
-                      Container(
-                        height: 44,
-                        width: 57,
-                        child: Center(
-                            child: Text(
-                              cat[r].letter!,
-                              style: TextStyle(
-                                fontSize: 15,
-                                font: arfont,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )),
-                      ),
-                      for(int j = 0 ; j < cat[r].videos.length;j++)
-                       Expanded(
-                        child: Container(
-                          height: 44.h,
-                          width: 57.w,
-                          decoration: BoxDecoration(
-                            color: cat[r].videos[j].isWatched?PdfColor.fromHex('#00EC34'):null,
-                              border: Border.all(
-                                color: PdfColor.fromHex('#000000'),
-                              ),
-                              boxShadow: const[
-                                BoxShadow(
-                                  spreadRadius: 2,
-                                )
-                              ]),
-                          child: Center(
-                            child: Text(
-                              cat[r].letter + ' - ${j+1}',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Text('تقرير حاله'),
+              SizedBox(height: 10.h,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Row(children: [
+                          Text('..........................'),
+                          Text('العمر'),
+                        ],),
+                        Row(children: [
+                          Text('.........................'),
+                          Text('تاريخ بدايه التدريب'),
+                        ],),
+                      ],
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Row(children: [
+                          Text('..........................'),
+                          Text('الاسم'),
+                        ],),
+                        Row(children: [
+                          Text('..................'),
+                          Text('اسم المدرب'),
+                        ],),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(': نتائج التقرير'),
+                ],
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              ...cat!.map((e) {
+                 return Container(
+                  child: Column(children: [
+                    Text('(${e.name}) ماتم أنجازه من مرحلة '),
+                    SizedBox(height: 12.h,),
+                    for(int i  = 0 ; i < e.categories!.length ; i++)
+                      for(int y = 0; y <  e.categories![i].videos!.length; y++)
+                        if(e.categories![i].videos![y].is_watched == true)Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                height: 30.h,
+                                child: Center(child: Text('${e.categories![i].videos![y].touchstone}')),
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: PdfColor.fromHex('#000000')
+                                    )
+                                ),),
                             ),
-                          ),
-                        ),
+                            Container(child: Center(child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text('${e.categories![i].letter} - ${y+1}'),
+                            )),
+                              height: 30.h,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: PdfColor.fromHex('#000000')
+                                  )
+                              ),),
+                          ],
+                        ),SizedBox(height: 12.h,),
+                  ],),
+                );
+              }),
+              SizedBox(height: 20.h,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('..................'),
+                  Text('تاريخ التقرير'),
+                  Spacer(),
+                  Text('.........................'),
+                  Text('اسم المدرب'),
+                ],
+              ),
+              SizedBox(height: 40.h,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        'كتب هذا التقرير من تطبيق الايبلز \nاعداد د.نور الصقر القادري'
+                        ,textAlign: TextAlign.right,
                       ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text('dr.nouralsager@gmail.com'),
                     ],
                   ),
-
-                // for(int i = 0 ; i< list[index].categories!.length;i++)
-
-
-                Container(
-                  height: 41.98.h,
-                  width: 321.w,
-                  child: Center(
-                      child: Text(
-                         name ,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.sp,
-                          font: arfont
-                        ),
-                      )),
-                      ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Text('Page $index')
-                )
-              ],
-            ),
+                ],
+              )
+            ],
           ),
         );
-      },
+       },
     );
   }
 }

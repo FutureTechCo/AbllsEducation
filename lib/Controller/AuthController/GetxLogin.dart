@@ -11,7 +11,7 @@ import '../../Screens/START _LOGIN/SingIn.dart';
 import '../../Screens/START _LOGIN/infrmation.dart';
 import '../../Screens/pplication interface/home.dart';
 import '../../Utils/CheckPassword.dart';
-import '../../Utils/HelperError.dart';
+import 'package:abllseducation/Utils/HelperError.dart';
 import '../../model/User_profile.dart';
 import '../../Controller/AuthController/userController.dart';
 

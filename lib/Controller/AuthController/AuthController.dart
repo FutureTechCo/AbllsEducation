@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../../Utils/HelperError.dart';
+import 'package:abllseducation/Utils/HelperError.dart';
 import '../../model/User_profile.dart';
 
 import '../SharedPreferences/SharedPreferences.dart';
