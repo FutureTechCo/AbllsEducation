@@ -97,6 +97,7 @@ class createPdf {
                       for(int y = 0; y <  e.categories![i].videos!.length; y++)
                         if(e.categories![i].videos![y].is_watched == true)Row(
                           children: [
+
                             Expanded(
                               child: Container(
                                 height: 30.h,
