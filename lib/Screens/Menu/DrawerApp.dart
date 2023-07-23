@@ -233,6 +233,37 @@ class DrawerApp extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
+            Navigator.pushNamed(context, routapp.SubscriptionHistory);
+          },
+          child: Container(
+            height: 30,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'سجل الاشتراك',
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontFamily: 'Arial',
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 16.w,
+                  ),
+                  Image.asset('assets/list.png'),
+                ],
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 18.h,
+        ),
+        InkWell(
+          onTap: () {
             LoginGetx().to.logout(context);
           },
           child: Padding(

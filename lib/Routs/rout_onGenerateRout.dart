@@ -1,3 +1,4 @@
+import 'package:abllseducation/Pyment/SubscriptionHistory.dart';
 import 'package:abllseducation/Screens/Menu/app.dart';
 import 'package:abllseducation/Screens/Menu/helpScreen.dart';
 import 'package:abllseducation/Screens/Profile/ChangeCantery.dart';
@@ -13,8 +14,8 @@ import 'package:abllseducation/Screens/pplication%20interface/totel_.dart';
 import 'package:abllseducation/Screens/pplication%20interface/vadeo_screen.dart';
 import 'package:abllseducation/Splash_Screen.dart';
 import 'package:flutter/material.dart';
-import '../MonthlySubscription.dart';
-import '../MonthlySubscription.dart';
+import '../Pyment/MonthlySubscription.dart';
+import '../Pyment/MonthlySubscription.dart';
 import '../Screens/START _LOGIN/LoginScreen.dart';
 import '../Screens/START _LOGIN/RegisterScreen.dart';
 import '../Screens/START _LOGIN/infrmation.dart';
@@ -47,6 +48,7 @@ import '../Screens/sub_screen/reselt.dart';
   static const String block_reselt='/block_reselt';
   static const String results ='/results';
   static const String  SplashScreen ='/SplashScreen';
+  static const String  SubscriptionHistory ='/SubscriptionHistory';
 }
 
 class AppRouts {
@@ -137,6 +139,9 @@ class AppRouts {
         case routapp.MonthlySubscription:
         return MaterialPageRoute(
           builder: (context) => MonthlySubscription(),
+        ); case routapp.SubscriptionHistory:
+        return MaterialPageRoute(
+          builder: (context) => SubscriptionHistory(),
         );
       default:
         return null;
