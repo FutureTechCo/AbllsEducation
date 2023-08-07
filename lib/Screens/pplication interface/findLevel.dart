@@ -18,6 +18,7 @@ class FindeLevel extends StatefulWidget {
 
 class _FindeLevelState extends State<FindeLevel> {
   late TextEditingController search;
+
   @override
   void initState() {
     search = TextEditingController();
@@ -28,6 +29,7 @@ class _FindeLevelState extends State<FindeLevel> {
   @override
   void dispose() {
     search.dispose();
+    HomeController.to.DataResultCategories = [];
     // TODO: implement dispose
     super.dispose();
   }
@@ -76,7 +78,7 @@ class _FindeLevelState extends State<FindeLevel> {
                 icon: Icon(Icons.arrow_back, color: Color(0xff003298))),
           ),
           body: Padding(
-            padding:   EdgeInsets.all(10.0.h),
+            padding: EdgeInsets.all(10.0.h),
             child: ListView(children: [
               for (int i = 0; i < controller.DataResultCategories.length; i++)
                 Row(
@@ -85,7 +87,7 @@ class _FindeLevelState extends State<FindeLevel> {
                       height: 44,
                       width: 57,
                       decoration:
-                      BoxDecoration(color: Color(0xff3A7FC4), boxShadow: [
+                          BoxDecoration(color: Color(0xff3A7FC4), boxShadow: [
                         BoxShadow(
                           color: Color(0xff7899DC),
                           spreadRadius: 2,
@@ -93,51 +95,68 @@ class _FindeLevelState extends State<FindeLevel> {
                       ]),
                       child: Center(
                           child: Text(
-                            controller.DataResultCategories[i].letter,
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )),
+                        controller.DataResultCategories[i].letter,
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
                     ),
-                    for (int j = 0;
-                        j < controller.DataResultCategories[i].videos.length;
-                        j++)
-                      Expanded(
-                        child: InkWell(
-                          onTap: () {
-                            var Oject =
-                                controller.DataResultCategories[i].videos[j];
-                            controller.SetVideos(Oject);
-                            controller.SetTapTitle(
-                                controller.DataResultCategories[i].name);
-                            log('messageVideos $Oject');
-                            Navigator.pushNamed(context, routapp.vadeo_screen);
-                          },
-                          child: Container(
-                            height: 44,
-                            width: 57,
-                            decoration:
-                                BoxDecoration(color: Colors.white, boxShadow: [
-                              BoxShadow(
-                                color: Color(0xff7899DC),
-                                spreadRadius: 2,
-                              )
-                            ]),
-                            child: Center(
-                              child: Text(
-                                controller.DataResultCategories[i].videos[j].mission_number,
-                                style: TextStyle(
-                                  color: Color(0xffA6A6A6),
-                                  fontSize: 16,
+                    if (!controller.DataResultCategories[i].videos.isEmpty)
+                      for (int j = 0;
+                          j < controller.DataResultCategories[i].videos.length;
+                          j++)
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              var Oject =
+                                  controller.DataResultCategories[i].videos[j];
+                              controller.SetVideos(Oject);
+                              controller.SetTapTitle(
+                                  controller.DataResultCategories[i].name);
+                              log('messageVideos $Oject');
+                              Navigator.pushNamed(
+                                  context, routapp.vadeo_screen);
+                            },
+                            child: Container(
+                              height: 44,
+                              width: 57,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0xff7899DC),
+                                      spreadRadius: 2,
+                                    )
+                                  ]),
+                              child: Center(
+                                child: Text(
+                                  controller.DataResultCategories[i].videos[j]
+                                      .mission_number,
+                                  style: TextStyle(
+                                    color: Color(0xffA6A6A6),
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
+                        )
+                    else
+                      Expanded(
+                        child: Container(
+                          height: 44,
+                          decoration:
+                              BoxDecoration(color: Colors.white, boxShadow: [
+                            BoxShadow(
+                              color: Color(0xff7899DC),
+                              spreadRadius: 2,
+                            )
+                          ]),
+                          child: Center(child: Text('لايوجد فيديوهات')),
                         ),
-                      ),
-
+                      )
                   ],
                 )
             ]),

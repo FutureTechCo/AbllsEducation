@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         builder: (context , child){
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'ABA Toolkit',
+          title: 'الايبلز Ablls-R',
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),

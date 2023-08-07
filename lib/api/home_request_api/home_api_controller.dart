@@ -31,9 +31,9 @@ class HomeApiController  with Helper{
   
   Future<List<Categories>> getAllCategories()async{
     List<Categories> DataResult;
-    var url = Uri.parse(SettingApiUri.Categories);
+    var url = Uri.parse(SettingApiUri.Categories+'?cus_id=${SharedPreferencesApp().GetIdUser}');
     var response = await http.get(url);
-    if (response.statusCode == 200) {
+     if (response.statusCode == 200) {
       DataResult = <Categories>[];
       jsonDecode(response.body).forEach((e) {
         DataResult.add(Categories.fromJson(e));

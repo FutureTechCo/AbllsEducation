@@ -36,14 +36,15 @@ class HomeController extends myGet.GetxController{
      DataResultCategories = [];
      var listRsult = <Categories>[];
      List<Categories> list = await HomeApiController().getAllCategories();
-
-     list.forEach((element) {
-       if(element.name.toLowerCase() == search.toLowerCase() || !listRsult.contains(element)){
+     log('sss=>${list.length}');
+     for (var element in list) {
+       log('${element.letter} , message===.${search.toLowerCase().trim().toString() == element.letter.toLowerCase().trim().toString()} , $search');
+       if((element.letter.toLowerCase().contains( search.toLowerCase()) && !listRsult.contains(element)) || (element.name.toLowerCase().contains( search.toLowerCase()))){
          listRsult.add(element);
         }else{
          DataResultCategories=[];
        }
-     });
+     }
      DataResultCategories.addAll(listRsult);
      log(listRsult.length.toString());
      update();

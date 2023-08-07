@@ -145,11 +145,10 @@ class _homeState extends State<home> {
                                              )),
                                        ),
                                        for(int j = 0 ; j < HomeController.to.DataResult[i].categories.length;j++)
-                                         if(HomeController.to.DataResult[i].categories[j].videos.isNotEmpty)
+                                         // if(HomeController.to.DataResult[i].categories[j].videos.isNotEmpty)
                                            Row(
                                              children: [
-                                               for (int k = 0; k <HomeController.to.DataResult[i].categories[j].videos.length; k++)
-                                                 Expanded(
+                                               if(HomeController.to.DataResult[i].categories[j].videos.isNotEmpty)for (int k = 0; k <HomeController.to.DataResult[i].categories[j].videos.length; k++)Expanded(
                                                    child: InkWell(
                                                      onTap: () async {
                                                        var Oject = HomeController.to.DataResult[i].categories[j].videos[k];
@@ -185,6 +184,18 @@ class _homeState extends State<home> {
                                                        ),
                                                      ),
                                                    ),
+                                                 )else Expanded(
+                                                   child: Container(
+                                                   height: 44,
+                                                   decoration: BoxDecoration(
+                                                       color: Colors.white,
+                                                       boxShadow: [
+                                                         BoxShadow(
+                                                           color: Color(0xff7899DC),
+                                                           spreadRadius: 2,
+                                                         )
+                                                       ]),
+                                                   child: Center(child: Text('لايوجد فيديوهات')),),
                                                  ),
                                                Container(
                                                  height: 44,
