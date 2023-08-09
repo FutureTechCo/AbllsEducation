@@ -3,6 +3,7 @@ import 'package:abllseducation/Screens/Wdjet/CstomAppar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class helpScreen extends StatelessWidget {
   const helpScreen({Key? key}) : super(key: key);
@@ -84,6 +85,22 @@ class helpScreen extends StatelessWidget {
                   ],
                 ),
                 Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(children: [
+                      Text('فكرة وإعداد وتنفيذ',
+                        style: GoogleFonts.cairo(fontSize: 12.sp, color: Colors.grey,fontWeight: FontWeight.bold) ,),
+                      Text('د.نور الصقر القادري',
+                          style: GoogleFonts.cairo(
+                              fontSize: 16.sp, fontWeight: FontWeight.bold)),
+                      Text('00218925312348',
+                          style:
+                          GoogleFonts.cairo(fontSize: 16.sp, fontWeight: FontWeight.bold))
+                      ,SizedBox(height: 10.h,)
+                    ],),
+                  ],
+                )
               ],
             )));
   }

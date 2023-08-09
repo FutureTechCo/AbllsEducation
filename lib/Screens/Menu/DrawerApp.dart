@@ -2,6 +2,7 @@ import 'package:abllseducation/Controller/HomeController/MenuController.dart';
 import 'package:abllseducation/Routs/rout_onGenerateRout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../../Controller/AuthController/userController.dart';
 
 import '../../Controller/AuthController/GetxLogin.dart';
@@ -25,49 +26,62 @@ class DrawerApp extends StatelessWidget {
                   ),
                   fit: BoxFit.cover)),
           child: Padding(
-            padding:   EdgeInsets.symmetric(horizontal: 8.0*2.h),
+            padding: EdgeInsets.symmetric(horizontal: 8.0 * 2.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                      onTap: ()=> Scaffold.of(context).closeEndDrawer(),
-                      child: CircleAvatar(child: Icon(Icons.close),backgroundColor: Colors.white,)),
-                       Container(
-                         width: 64.w,
-                         height: 64.h,
-                         clipBehavior: Clip.antiAlias,
-                         decoration: BoxDecoration(
-                             borderRadius: BorderRadius.circular(90.r)),
-                         child: userController.to.avatar != 'https://talaadmin.online/'
-                             ? Image.network(
-                           userController.to.avatar,
-                           fit: BoxFit.cover,
-                         )
-                             : Image.asset('assets/download.png'),
-                       ),
-                ],
-              ),
-              SizedBox(height: 9.h,),
-              Text(userController.to.name??'اهلان ايها الزائير',
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontFamily: 'Arial',
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                ),),
-                SizedBox(height: 2.h,),
-                Text(userController.to.email??'',
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontFamily: 'Arial',
-                  color: Colors.white,
-                  fontWeight: FontWeight.w400,
-                ),),
-            ],),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                        onTap: () => Scaffold.of(context).closeEndDrawer(),
+                        child: CircleAvatar(
+                          child: Icon(Icons.close),
+                          backgroundColor: Colors.white,
+                        )),
+                    Container(
+                      width: 64.w,
+                      height: 64.h,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(90.r)),
+                      child: userController.to.avatar !=
+                              'https://talaadmin.online/'
+                          ? Image.network(
+                              userController.to.avatar,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.asset('assets/download.png'),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 9.h,
+                ),
+                Text(
+                  userController.to.name ?? 'اهلان ايها الزائير',
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontFamily: 'Arial',
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                SizedBox(
+                  height: 2.h,
+                ),
+                Text(
+                  userController.to.email ?? '',
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontFamily: 'Arial',
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         SizedBox(
@@ -75,7 +89,7 @@ class DrawerApp extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-             Navigator.pushNamed(context,routapp.Profile_Screen);
+            Navigator.pushNamed(context, routapp.Profile_Screen);
           },
           child: Container(
             height: 30,
@@ -109,7 +123,7 @@ class DrawerApp extends StatelessWidget {
             menuController.to.launchUrls(menuController.to.url);
           },
           child: Container(
-             height: 30,
+            height: 30,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.h),
               child: Row(
@@ -138,9 +152,6 @@ class DrawerApp extends StatelessWidget {
         InkWell(
           onTap: () {
             Navigator.pushNamed(context, routapp.results);
-           
-
-
           },
           child: Container(
             height: 30,
@@ -171,7 +182,7 @@ class DrawerApp extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context,routapp.AboutAppScreen);
+            Navigator.pushNamed(context, routapp.AboutAppScreen);
           },
           child: Container(
             height: 30,
@@ -202,7 +213,7 @@ class DrawerApp extends StatelessWidget {
         ),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context,routapp.helpScreen);
+            Navigator.pushNamed(context, routapp.helpScreen);
           },
           child: Container(
             height: 30,
@@ -222,7 +233,10 @@ class DrawerApp extends StatelessWidget {
                   SizedBox(
                     width: 16.w,
                   ),
-                 Icon(Icons.help_center_outlined,size: 28.sm,)
+                  Icon(
+                    Icons.help_center_outlined,
+                    size: 28.sm,
+                  )
                 ],
               ),
             ),
@@ -287,7 +301,21 @@ class DrawerApp extends StatelessWidget {
             ),
           ),
         ),
-
+        Spacer(),
+        Text('فكرة وإعداد وتنفيذ',
+            style: GoogleFonts.cairo(fontSize: 12.sp, color: Colors.grey,fontWeight: FontWeight.bold)),
+        Text('د.نور الصقر القادري',
+            style: GoogleFonts.cairo(
+                fontSize: 16.sp, fontWeight: FontWeight.bold)),
+        Text('00218925312348',
+            style:
+                GoogleFonts.cairo(fontSize: 16.sp, fontWeight: FontWeight.bold))
+        ,SizedBox(height: 10.h,),
+        //   TextStyle(
+        //       fontFamily: 'Arial',
+        //       fontSize: 12.sp,
+        //       fontWeight: FontWeight.w400),
+        // )
       ],
     ));
     // UserAccountsDrawerHeader(

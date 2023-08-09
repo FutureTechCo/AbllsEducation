@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -196,6 +197,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
+              SizedBox(
+                height: 30.0.h,
+              ),
+             Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(children: [
+                    Text('فكرة وإعداد وتنفيذ',
+                      style: GoogleFonts.cairo(fontSize: 12.sp, color: Colors.grey,fontWeight: FontWeight.bold) ,),
+                    Text('د.نور الصقر القادري',
+                        style: GoogleFonts.cairo(
+                            fontSize: 16.sp, fontWeight: FontWeight.bold)),
+                    Text('00218925312348',
+                        style:
+                        GoogleFonts.cairo(fontSize: 16.sp, fontWeight: FontWeight.bold))
+                    ,SizedBox(height: 10.h,)
+                  ],),
+                ],
+              )
+
             ]),
           ),
         ),
