@@ -29,6 +29,7 @@ class HomeController extends myGet.GetxController{
       await HomeApiController().getAllLevels().then((value) {
         DataResult = <levels_model_response>[];
         DataResult = value;
+        DataResult.sort((a, b) => a.name.compareTo(b.name));
       });
        update();
    }

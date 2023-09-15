@@ -114,116 +114,124 @@ class _homeState extends State<home> {
                                  child: SizedBox(
                                    height: 573.99.h,
                                    width: 324.w,
-                                   child: Column(
-                                     children: [
-                                       SizedBox(
-                                         height: 3.h,
-                                       ),
-                                       Container(
-                                         height: 41.98.h,
-                                         width: 321.w,
-                                         decoration: BoxDecoration(
-                                             color: Colors.white,
-                                             borderRadius: BorderRadius.only(
-                                               topLeft: Radius.circular(10.r),
-                                               topRight: Radius.circular(10.r),
-                                             ),
-                                             boxShadow: [
-                                               BoxShadow(
-                                                 color: Color(0xff7899DC),
-                                                 spreadRadius: 2,
-                                               )
-                                             ]),
-                                         child: Center(
-                                             child: Text(
-                                               '${HomeController.to.DataResult[i].name}',
-                                               style: TextStyle(
-                                                   fontWeight: FontWeight.bold,
-                                                   fontSize: 20.sp,
-                                                   fontFamily: 'Arial',
-                                                   color: Color(0xff003298)),
-                                             )),
-                                       ),
-                                       for(int j = 0 ; j < HomeController.to.DataResult[i].categories.length;j++)
-                                         // if(HomeController.to.DataResult[i].categories[j].videos.isNotEmpty)
-                                           Row(
-                                             children: [
-                                               if(HomeController.to.DataResult[i].categories[j].videos.isNotEmpty)for (int k = 0; k <HomeController.to.DataResult[i].categories[j].videos.length; k++)Expanded(
-                                                   child: InkWell(
-                                                     onTap: () async {
-                                                       var Oject = HomeController.to.DataResult[i].categories[j].videos[k];
-                                                       HomeController.to.SetVideos(Oject);
-                                                       HomeController.to.SetTapTitle(HomeController.to.DataResult[i].categories[j].letter);
-                                                        log('messageVideos $Oject');
-                                                     dynamic r =  await Navigator.pushNamed(
-                                                           context, routapp.vadeo_screen);
-                                                      if(r[0] == 'true'){
-                                                        setState(() {
-                                                        });
-                                                      }
-                                                     },
-                                                     child: Container(
+                                   child: SingleChildScrollView(
+                                     child: Column(
+                                       children: [
+                                         SizedBox(
+                                           height: 3.h,
+                                         ),
+                                         Padding(
+                                           padding:   EdgeInsets.symmetric(horizontal: 8.h),
+                                           child: Container(
+                                             height: 41.98.h,
+                                             width: 321.w,
+                                             decoration: BoxDecoration(
+                                                 color: Colors.white,
+                                                 borderRadius: BorderRadius.only(
+                                                   topLeft: Radius.circular(10.r),
+                                                   topRight: Radius.circular(10.r),
+                                                 ),
+                                                 boxShadow: [
+                                                   BoxShadow(
+                                                     color: Color(0xff7899DC),
+                                                     spreadRadius: 2,
+                                                   )
+                                                 ]),
+                                             child: Center(
+                                                 child: Text(
+                                                   '${HomeController.to.DataResult[i].name}',
+                                                   style: TextStyle(
+                                                       fontWeight: FontWeight.bold,
+                                                       fontSize: 20.sp,
+                                                       fontFamily: 'Arial',
+                                                       color: Color(0xff003298)),
+                                                 )),
+                                           ),
+                                         ),
+                                         for(int j = 0 ; j < HomeController.to.DataResult[i].categories.length;j++)
+                                           // if(HomeController.to.DataResult[i].categories[j].videos.isNotEmpty)
+                                             Padding(
+                                               padding:   EdgeInsets.symmetric(horizontal: 8.h),
+                                               child: Row(
+                                                 children: [
+                                                   if(HomeController.to.DataResult[i].categories[j].videos.isNotEmpty)for (int k = 0; k <HomeController.to.DataResult[i].categories[j].videos.length; k++)Expanded(
+                                                       child: InkWell(
+                                                         onTap: () async {
+                                                           var Oject = HomeController.to.DataResult[i].categories[j].videos[k];
+                                                           HomeController.to.SetVideos(Oject);
+                                                           HomeController.to.SetTapTitle(HomeController.to.DataResult[i].categories[j].letter);
+                                                            log('messageVideos $Oject');
+                                                         dynamic r =  await Navigator.pushNamed(
+                                                               context, routapp.vadeo_screen);
+                                                          if(r[0] == 'true'){
+                                                            setState(() {
+                                                            });
+                                                          }
+                                                         },
+                                                         child: Container(
+                                                           height: 44,
+                                                           width: 57,
+                                                           decoration: BoxDecoration(
+                                                               color: HomeController.to.DataResult[i].categories![j].videos[k].is_watched? Color(0xff00FF00):Colors.white,
+                                                               boxShadow: [
+                                                                 BoxShadow(
+                                                                   color: Color(0xff7899DC),
+                                                                   spreadRadius: 2,
+                                                                 )
+                                                               ]),
+                                                           child: Center(
+                                                             child: Text(
+                                                               HomeController.to.DataResult[i].categories[j].letter+' - ${k+1}',
+                                                               style: TextStyle(
+                                                                 color: Color(0xffA6A6A6),
+                                                                 fontSize: 16,
+                                                               ),
+                                                             ),
+                                                           ),
+                                                         ),
+                                                       ),
+                                                     )else Expanded(
+                                                       child: Container(
                                                        height: 44,
-                                                       width: 57,
                                                        decoration: BoxDecoration(
-                                                           color: HomeController.to.DataResult[i].categories![j].videos[k].is_watched? Color(0xff00FF00):Colors.white,
+                                                           color: Colors.white,
                                                            boxShadow: [
                                                              BoxShadow(
                                                                color: Color(0xff7899DC),
                                                                spreadRadius: 2,
                                                              )
                                                            ]),
-                                                       child: Center(
-                                                         child: Text(
-                                                           HomeController.to.DataResult[i].categories[j].letter+' - ${k+1}',
-                                                           style: TextStyle(
-                                                             color: Color(0xffA6A6A6),
-                                                             fontSize: 16,
-                                                           ),
-                                                         ),
-                                                       ),
+                                                       child: Center(child: Text('لايوجد فيديوهات')),),
                                                      ),
-                                                   ),
-                                                 )else Expanded(
-                                                   child: Container(
-                                                   height: 44,
-                                                   decoration: BoxDecoration(
-                                                       color: Colors.white,
-                                                       boxShadow: [
-                                                         BoxShadow(
-                                                           color: Color(0xff7899DC),
-                                                           spreadRadius: 2,
-                                                         )
-                                                       ]),
-                                                   child: Center(child: Text('لايوجد فيديوهات')),),
-                                                 ),
-                                               Container(
-                                                 height: 44,
-                                                 width: 57,
-                                                 decoration: BoxDecoration(
-                                                     color: Color(0xff3A7FC4),
-                                                     boxShadow: [
-                                                       BoxShadow(
-                                                         color: Color(0xff7899DC),
-                                                         spreadRadius: 2,
-                                                       )
-                                                     ]),
-                                                 child: Center(
-                                                     child: Text(
-                                                       HomeController.to.DataResult[i].categories[j].letter,
-                                                       style: TextStyle(
-                                                         fontSize: 25,
-                                                         color: Colors.white,
-                                                         fontWeight: FontWeight.bold,
-                                                       ),
-                                                     )),
-                                               )
-                                             ],
-                                           )
-                                     ],
+                                                   Container(
+                                                     height: 44,
+                                                     width: 57,
+                                                     decoration: BoxDecoration(
+                                                         color: Color(0xff3A7FC4),
+                                                         boxShadow: [
+                                                           BoxShadow(
+                                                             color: Color(0xff7899DC),
+                                                             spreadRadius: 2,
+                                                           )
+                                                         ]),
+                                                     child: Center(
+                                                         child: Text(
+                                                           HomeController.to.DataResult[i].categories[j].letter,
+                                                           style: TextStyle(
+                                                             fontSize: 25,
+                                                             color: Colors.white,
+                                                             fontWeight: FontWeight.bold,
+                                                           ),
+                                                         )),
+                                                   )
+                                                 ],
+                                               ),
+                                             )
+                                       ],
+                                     ),
                                    ),
-                                 ),
-                               )
+                                 )
+                                   )
                              ],
                            ),
                          ),
