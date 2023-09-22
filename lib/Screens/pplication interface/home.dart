@@ -25,7 +25,7 @@ class _homeState extends State<home> {
         future: HomeController.to.getDataLevel(),
         builder: (context, snapshot) {
           if(HomeController.to.DataResult.isNotEmpty){
-            return Obx(
+             return Obx(
               () =>  SafeArea(
                    child: SingleChildScrollView(
                      child: Column(

@@ -47,12 +47,12 @@ class CstomAppar extends StatelessWidget {
                             clipBehavior: Clip.antiAlias,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(90.r)),
-                            child: userController.to.avatar!='https://talaadmin.online/'
-                                ? Image.network(
-                                    userController.to.avatar,
-                                    fit: BoxFit.cover,
-                                  )
-                                : Image.asset('assets/download.png'),
+                            child:  userController.to.avatar.isEmpty||userController.to.avatar.length=='https://talaadmin.online/'.length
+                                ?Image.asset('assets/download.png')
+                                :  Image.network(
+                              userController.to.avatar,
+                              fit: BoxFit.cover,
+                            )
                           ),
                           SizedBox(width: 10.w),
                           Column(

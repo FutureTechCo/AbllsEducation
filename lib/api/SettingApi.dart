@@ -7,4 +7,6 @@ class SettingApiUri{
  static const String customer_data="$_BaseUrl/customer/details";
  static const String report ="$_BaseUrl/customer/report?";
  static const String watch ="$_BaseUrl/customer/watch_video";
+ static const String subscribe ="$_BaseUrl/customer/subscribe";
+ static const String monthly_subscription_value ="$_BaseUrl/monthly_subscription_value";
 }

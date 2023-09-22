@@ -1,15 +1,14 @@
+import 'dart:convert';
 import 'dart:developer';
+import 'package:abllseducation/api/SettingApi.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
+ import 'package:http/http.dart'as http;
 import 'package:abllseducation/Utils/HelperError.dart';
-import '../../model/User_profile.dart';
-
+ 
 import '../SharedPreferences/SharedPreferences.dart';
 import 'GetxLogin.dart';
 
@@ -116,5 +115,15 @@ class FirebaseAuhController with Helper {
             context: context, Message: 'تفقد بريدك الالكتروني', Error: true);
       });
     } on FirebaseAuthException catch (ee) {}
+  }
+  Future<String> monthly_subscription_value()async{
+     var url = Uri.parse(SettingApiUri.monthly_subscription_value);
+     var res = await http.get(url);
+     String val =  '';
+     if(res.statusCode < 400){
+       val = jsonDecode(res.body)['value'];
+       log('message=>${jsonDecode(res.body)['value']}');
+     }
+     return val;
   }
 }

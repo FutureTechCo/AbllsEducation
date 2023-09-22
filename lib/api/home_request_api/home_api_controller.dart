@@ -5,6 +5,7 @@ import 'package:abllseducation/Controller/SharedPreferences/SharedPreferences.da
 import 'package:abllseducation/Utils/HelperError.dart';
 import 'package:abllseducation/api/SettingApi.dart';
 import 'package:abllseducation/model/levels_model_response.dart';
+import 'package:abllseducation/model/subscribe_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -20,8 +21,11 @@ class HomeApiController  with Helper{
     var response = await http.get(url);
     if (response.statusCode == 200) {
        DataResult = <levels_model_response>[];
-      jsonDecode(response.body).forEach((e) {
-        DataResult.add(levels_model_response.fromJson(e));
+      jsonDecode(response.body).values.forEach((e) {
+        log('messageAE=>${e}');
+        if(levels_model_response.fromJson(e).categories.isNotEmpty) {
+          DataResult.add(levels_model_response.fromJson(e));
+        }
       });
       return DataResult;
     }
@@ -31,7 +35,8 @@ class HomeApiController  with Helper{
   
   Future<List<Categories>> getAllCategories()async{
     List<Categories> DataResult;
-    var url = Uri.parse(SettingApiUri.Categories+'?cus_id=${SharedPreferencesApp().GetIdUser}');
+    Map amp  = {};
+     var url = Uri.parse(SettingApiUri.Categories+'?cus_id=${SharedPreferencesApp().GetIdUser}');
     var response = await http.get(url);
      if (response.statusCode == 200) {
       DataResult = <Categories>[];
@@ -57,5 +62,20 @@ class HomeApiController  with Helper{
         ShowSnackBar(context: context, Message: 'تم المشاهدة', Error: true);
       }
     }
+  }
+  ///subscribe subscribe subscribe subscribe subscribe subscribe subscribe
+  Future<List<subscribe_model>> getAllSubscribe()async{
+    List<subscribe_model> DataResult = [];
+    //${SharedPreferencesApp().GetIdUser}
+     var url = Uri.parse(SettingApiUri.subscribe+'?cus_id=asd32qw1e5qw46eeeee');
+    var response = await http.get(url);
+    if (response.statusCode < 400) {
+      log('message=>${response.body}');
+      DataResult = <subscribe_model>[];
+      jsonDecode(response.body).forEach((e) {
+        DataResult.add(subscribe_model.fromJson(e));
+      });
+     }
+    return DataResult;
   }
 }
